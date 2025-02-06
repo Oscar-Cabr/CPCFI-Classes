@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="media/favicon.jpeg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <head>
+        <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
+    </head>
+    
+    <link rel="icon" href="media/CPCFI.png " type="image/png">
+    <title>Algorithmic Complexity</title>
+</head>
+<body class="background">
+
+<a href="index.html">
+    <img src="media/CPCFI.png" alt="CPCI Logo" class="floating_image">
+</a>
+
+<main>    
+    <br><br>
+    <section class="floating_solid_band">
+
+        <p class="supertitle">Algorithmic Complexity</p><br><br>
+
+        <p class="subtitle">Algorithm Analysis</p>
+
+        <p class="text">
+            Given the maximum input bound, can the currently
+            developed algorithm, with its time/space complexity,
+            pass the time/memory limit given for that particular problem?
+            <br><br>
+            It is important to study algorithm analysis because in competitive
+            programming problems we often have to deal with very large inputs/outputs,
+            and it is necessary for us to be able to know when a proposed solution
+            will pass the time/memory constraints given on the problem.
+            <br>
+            We have to know it before start coding the solution, implementing with no sense
+            could be the difference in a competition between team <i>i</i> and <i>i+1</i>.
+            <br><br>
+            <i>Start coding an algorithm only when you know it is correct and fast enough.</i>
+            <br><br>
+            The algorithm complexity will decide if its worth it to implement a certain algorithm
+            or if its necessary to <b>optimize</b> it using sophisticated techniques, or
+            attack the problem with another approach.
+        </p>
+
+        <hr>
+
+        <p class="text">
+            Computers, in general, can run \( 10^8 \) operations per second, we can use this information
+            to know if our algorithm will run in time.
+            <br>
+            This number can change a little (sometimes no that little) depending on the programming language
+            we're using.
+            <ul class="text">
+                <li>C++ : \( 10^8 \)</li>
+                <li>Java : \( 10^{7.3} \)</li>
+                <li>Python : \( 10^7 \)</li>
+            </ul>
+        </p>
+        <p class="text">
+            \( 10^8 \) = 100,000,000 = 100M
+            <br><br>
+            Choose the most convenient language to approach an specific problem its also important, and its
+            something else the algorithmic complexity could help us with.
+            <br><br>
+        </p>
+
+        <hr>
+
+        <p class="text">
+            Algorithms can be analized from two perspectives:
+            <ul class="text">
+                <li><b>Time</b> : Measured in units of time (usually seconds) and represents the amount of time needed for an algorithm to complete.</li>
+                <li><b>Memory</b> : Measured in units of memory (usually MB) and represents the amount of memory used by the algorithm.</li>
+            </ul>
+        </p>
+        <p class="text">
+            <b>Time</b> and <b>Memory</b> have an indirect relationship.
+            Usually, if we want less time, we need more memory and viceversa.
+            <br><br>
+            Together they build the <b>space and temporal complexity</b> of a solution.
+            <br><br>
+            The space complexity is strongly related to the time complexity. Once we choose the algorithm and the
+            data structures we'll be using, there exists a balance between the <b>size</b> of the DS (space), and the
+            <b>time</b> it take to it to do the operations needed.
+        </p>
+
+        <p class="subtitle">The RAM Model (Kind of)</p>
+
+        <p class="text">
+            We need techniques to compare the efficiency of algorithms <b>before</b> implementing them.
+            Techinques such as the <i>RAM Model</i>, and the <i>Asymptotic Analysis (Big O notation)</i>.
+            <br><br>
+            Machine independent algorithms depend on a hypothetical computer called <i>Random Access Machine</i>.
+            <br><br>
+            <i>In the RAM model we measure run time by counting the number steps an algorithm takes on a given problem instance.</i>
+            <br><br>
+            Whats does a cycle depend on and how does it evolves?
+            <br><br>
+            We cannot know the exact number of operations our algorithm will do on execution,
+            but we can do an analysis of its general behavior and take decisions based on that.
+            <br><br>
+            Some rules:
+            <ul class="text">
+                <li>Each single operation takes one time step, its <b>constant</b>: \( +, -, *, /, =, <, >, ==, !=, \) if, switch</li>
+                <li>Each memory access takes exactly one time step.</li>
+                <li>
+                    Loops and subroutines are a composition of multiple single operations.<br>
+                    The time step of a loop depends on the number of iterations the loop makes.<br>
+                    Variations in complexity are caused by cycles.<br>
+                </li>
+                <li>Separated sentences are added.</li>
+                <li>Nested sentences are multiplied.</li>
+            </ul>
+        </p>
+
+        <p class="subtitle">Big O notation</p>
+
+        <p class="text">
+            Provides a better intuition than the RAM Model since it require too much detail to specify precisely its behavior,
+            and many times the steps count depends on the programmer.
+            <br><br>
+            Big O notation solves this issues by providing upper and lower bounds of time-complexity functions.
+            <br><br>
+            Big O notation ignores multiplicative constants:
+            \( f(n) = 2n \) is considered the same as \( g(n) = n \).
+            <br><br>
+            Upper and lower bounds valid for \( n > n_0 \).
+            <br><br>
+            <img class="bound_image" src="media/complexity/upper_and_lower_bound.jpg" alt="Lower and Upper bound">
+            <br><br><br>
+            \( f(n) = O( g(n) ) \; ; \; f(n) \leq c \cdot g(n) \)
+            <br><br>
+            <img class="bound_image" src="media/complexity/formal_upper_bound.jpg" alt="Upper bound">
+            <br><br><br>
+            \( f(n) = \Omega( g(n) ) \; ; \; f(n) \geq c \cdot g(n) \)
+            <br><br>
+            <img class="bound_image" src="media/complexity/formal_lower_bound.jpg" alt="Lower bound">
+            <br><br><br>
+            \( f(n) = \Theta( g(n) ) \; ; \; c_2 \cdot g(n) \leq f(n) \leq c_1 \cdot g(n) \)
+            <br><br>
+            <img class="bound_image" src="media/complexity/formal_lower-upper_bound.jpg" alt="Lower and Upper bound">
+            <br><br><br>
+        </p>
+
+        <p class="subtitle">Most common complexities</p>
+
+        <p class="text">
+            Ordered from the best to the worst one:
+
+            <ol class="text">
+                <li>
+                    \( O(1) \) :<br>
+                    Always do the same number of operations.<br>
+                    The constant could be enormous.<br>
+                    Ex. Guessing a password by brute force of \( n \) digits take \( 10^n \).<br><br>
+                </li>
+                <li>
+                    \( O(log(n)) \) :<br>
+                    Usually base 2, but could be in any other base.<br>
+                    Binary search.<br><br>
+                </li>
+                <li>
+                    \( O(\sqrt{n}) \) :<br>
+                    Common in algorithms related to prime numbers or divisors.<br>
+                    Related to number theory.<br><br>
+                </li>
+                <li>
+                    \( O(n) \) :<br>
+                    Pretty common.<br>
+                    IO setting.<br><br>
+                </li>
+                <li>
+                    \( O(nlog(n)) \) :<br>
+                    Shows up in <b>sorting</b> problems, sparse tables...<br>
+                    Usually \( log \) is \( log_2 \).<br><br>
+                </li>
+                <li>
+                    \( O(n^2) \) :<br>
+                    Pretty common.<br><br>
+                </li>
+                <li>
+                    \( O(n^k) \) :<br>
+                    Polynomial complexities.<br>
+                    Multidimensional arrays of \( k \) dimensions (\( k \) its a constant).<br><br>
+                </li>
+                <li>
+                    \( O(2^n), \; O(10^n), \; O(n^m) \) :<br>
+                    Let \( m \) be another variable.<br>
+                    Hanoi's Towers of \( n \) disks take obligatory \( 2^{n-1} \) steps.<br>
+                </li>
+                <li>
+                    \( O(n!) \) :<br>
+                    Bogosort.<br>
+                    Combinatorics.<br><br>
+                </li>
+            </ol>
+        </p>
+
+        <p class="text">
+            Approximation to possible valid complexities on standard time according to the entry of competitive programming problems.<br>
+            <img class="bound_image" src="media/complexity/valid_complexities_for_standard_inputs.jpg" alt="Common complexities">
+            <br><br><br>
+            Complexity of operations in C++ implementation of Data Structures (STL).<br>
+            <img class="bound_image" src="media/complexity/complexity_DS_operations.jpg" alt="Complexity of operations in DS">
+            <br><br><br>
+            Complexity of common sorting algorithms.<br>
+            <img class="bound_image" src="media/complexity/complexity_in_sortings.jpg" alt="Complexity in sortings">
+            <br><br><br>
+        </p>
+
+        <p class="subtitle">Codeforces problems to analyze!</p>
+
+        <br>
+        <section class="cf_problem">
+            <ol>
+                <a href="https://codeforces.com/problemset/problem/266/B" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 266B - Queue at the school</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1932/A" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1932A - Thorns and Coins</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/270/A" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 270A - Fancy Fence</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/2042/A" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 2042A - Greedy Monocarp</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1165/B" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1165B - Polycarp Training</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1743/A" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1743A - Password</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1709/B" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1709B - Also Try Minecraft</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/2050/C" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 2050C - Uninteresting Number</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/2051/C" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 2051C - Preparing for the Exam</p></li></a>
+                <a href="https://codeforces.com/contest/1249" target="_blank"><li><img class="cf_icon" src="media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces Contest 1249</p></li></a>
+            </ol>
+        <br>
+    </section>
+</main>
+<br><br><br>
+
+</body>
+</html>
