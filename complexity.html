@@ -38,20 +38,20 @@
         <p class="text">
             Given the maximum input bound, can the currently
             developed algorithm, with its time/space complexity,
-            pass the time/memory limit given for that particular problem?
+            pass the time/memory limit for that particular problem?
             <br><br>
             It is important to study algorithm analysis because in competitive
-            programming problems we often have to deal with very large inputs/outputs,
-            and it is necessary for us to be able to know when a proposed solution
-            will pass the time/memory constraints given on the problem.
+            programming problems, we often have to deal with very large inputs/outputs,
+            and we must be able to know when a proposed solution
+            will pass the time/memory constraints given to the problem.
             <br>
-            We have to know it before start coding the solution, implementing with no sense
+            We have to know it before start coding the solution, implementing it with no sense
             could be the difference in a competition between team <i>i</i> and <i>i+1</i>.
             <br><br>
             <i>Start coding an algorithm only when you know it is correct and fast enough.</i>
             <br><br>
-            The algorithm complexity will decide if its worth it to implement a certain algorithm
-            or if its necessary to <b>optimize</b> it using sophisticated techniques, or
+            The algorithm complexity will decide if it's worth it to implement a certain algorithm
+            or if it's necessary to <b>optimize</b> it using sophisticated techniques or
             attack the problem with another approach.
         </p>
 
@@ -61,7 +61,7 @@
             Computers, in general, can run \( 10^8 \) operations per second, we can use this information
             to know if our algorithm will run in time.
             <br>
-            This number can change a little (sometimes no that little) depending on the programming language
+            This number can change a little (sometimes not that little) depending on the programming language
             we're using.
             <ul class="text">
                 <li>C++ : \( 10^8 \)</li>
@@ -72,7 +72,7 @@
         <p class="text">
             \( 10^8 \) = 100,000,000 = 100M
             <br><br>
-            Choose the most convenient language to approach an specific problem its also important, and its
+            Choosing the most convenient language to approach a specific problem is also important, and it's
             something else the algorithmic complexity could help us with.
             <br><br>
         </p>
@@ -80,7 +80,7 @@
         <hr>
 
         <p class="text">
-            Algorithms can be analized from two perspectives:
+            Algorithms can be analyzed from two perspectives:
             <ul class="text">
                 <li><b>Time</b> : Measured in units of time (usually seconds) and represents the amount of time needed for an algorithm to complete.</li>
                 <li><b>Memory</b> : Measured in units of memory (usually MB) and represents the amount of memory used by the algorithm.</li>
@@ -88,33 +88,33 @@
         </p>
         <p class="text">
             <b>Time</b> and <b>Memory</b> have an indirect relationship.
-            Usually, if we want less time, we need more memory and viceversa.
+            Usually, if we want less time, we need more memory, and vice versa.
             <br><br>
             Together they build the <b>space and temporal complexity</b> of a solution.
             <br><br>
             The space complexity is strongly related to the time complexity. Once we choose the algorithm and the
             data structures we'll be using, there exists a balance between the <b>size</b> of the DS (space), and the
-            <b>time</b> it take to it to do the operations needed.
+            <b>time</b> it takes to it to do the operations needed.
         </p>
 
         <p class="subtitle">The RAM Model (Kind of)</p>
 
         <p class="text">
             We need techniques to compare the efficiency of algorithms <b>before</b> implementing them.
-            Techinques such as the <i>RAM Model</i>, and the <i>Asymptotic Analysis (Big O notation)</i>.
+            Techniques such as the <i>RAM Model</i>, and the <i>Asymptotic Analysis (Big O notation)</i>.
             <br><br>
-            Machine independent algorithms depend on a hypothetical computer called <i>Random Access Machine</i>.
+            Machine-independent algorithms depend on a hypothetical computer called a <i>Random Access Machine</i>.
             <br><br>
-            <i>In the RAM model we measure run time by counting the number steps an algorithm takes on a given problem instance.</i>
+            <i>In the RAM model, we measure run time by counting the number of steps an algorithm takes on a given problem instance.</i>
             <br><br>
-            Whats does a cycle depend on and how does it evolves?
+            What does a cycle depend on and how does it evolve?
             <br><br>
             We cannot know the exact number of operations our algorithm will do on execution,
-            but we can do an analysis of its general behavior and take decisions based on that.
+            but we can do an analysis of its general behavior and make decisions based on that.
             <br><br>
             Some rules:
             <ul class="text">
-                <li>Each single operation takes one time step, its <b>constant</b>: \( +, -, *, /, =, <, >, ==, !=, \) if, switch</li>
+                <li>Each single operation takes one-time step, its <b>constant</b>: \( +, -, *, /, =, <, >, ==, !=, \) if, switch</li>
                 <li>Each memory access takes exactly one time step.</li>
                 <li>
                     Loops and subroutines are a composition of multiple single operations.<br>
@@ -129,15 +129,15 @@
         <p class="subtitle">Big O notation</p>
 
         <p class="text">
-            Provides a better intuition than the RAM Model since it require too much detail to specify precisely its behavior,
-            and many times the steps count depends on the programmer.
+            Provides a better intuition than the RAM Model since it requires too much detail to specify precisely its behavior,
+            and many times the step count depends on the programmer.
             <br><br>
-            Big O notation solves this issues by providing upper and lower bounds of time-complexity functions.
+            Big O notation solves this issue by providing upper and lower bounds of time complexity functions.
             <br><br>
             Big O notation ignores multiplicative constants:
             \( f(n) = 2n \) is considered the same as \( g(n) = n \).
             <br><br>
-            Upper and lower bounds valid for \( n > n_0 \).
+            Upper and lower bounds are valid for \( n > n_0 \).
             <br><br>
             <img class="bound_image" src="media/complexity/upper_and_lower_bound.jpg" alt="Lower and Upper bound">
             <br><br><br>
@@ -165,7 +165,7 @@
                     \( O(1) \) :<br>
                     Always do the same number of operations.<br>
                     The constant could be enormous.<br>
-                    Ex. Guessing a password by brute force of \( n \) digits take \( 10^n \).<br><br>
+                    Ex. Guessing a password by brute force of \( n \) digits takes \( 10^n \).<br><br>
                 </li>
                 <li>
                     \( O(log(n)) \) :<br>
@@ -185,7 +185,7 @@
                 <li>
                     \( O(nlog(n)) \) :<br>
                     Shows up in <b>sorting</b> problems, sparse tables...<br>
-                    Usually \( log \) is \( log_2 \).<br><br>
+                    Usually, \( log \) is \( log_2 \).<br><br>
                 </li>
                 <li>
                     \( O(n^2) \) :<br>
@@ -194,7 +194,7 @@
                 <li>
                     \( O(n^k) \) :<br>
                     Polynomial complexities.<br>
-                    Multidimensional arrays of \( k \) dimensions (\( k \) its a constant).<br><br>
+                    Multidimensional arrays of \( k \) dimensions (\( k \) is a constant).<br><br>
                 </li>
                 <li>
                     \( O(2^n), \; O(10^n), \; O(n^m) \) :<br>
