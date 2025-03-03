@@ -69,8 +69,8 @@
             </ul>
         </p>
         <p class="text">
-            All of them follow different strategies to do the same, choosing which one should we use depends on some factors such as: the kind
-            of elements we're sorting, and the available compute resources. Most of the time on competitive programming we're thinking about
+            All of them follow different strategies to do the same, choosing which one should we use depends on some factors such as the kind
+            of elements we're sorting, and the available computing resources. Most of the time in competitive programming we're thinking about
             the second thing, the compute resources translate as the giving constraints on algorithmic complexity for one particular problem.
         </p>
         <hr>
@@ -84,7 +84,7 @@
             can be done by moving it into other data structures, and other times we can sort it.
             <br>
             <b>Greedy</b> algorithms are very often related to sorting problems because the local decision needs to be optimized based on some
-            comparison criteria, very related to sortings.
+            comparison criteria, which is very related to sorting.
             <br><br>
             The other reason is that sorting facilitates the searching problem. Knowing if an element is in our collection, or where is it
             is a basic operation that can be expensive. Usually, the way of optimizing this in a list is with <b>binary search</b>, an efficient
@@ -93,7 +93,8 @@
             It can be seen that sorting has a lot in common with some data structures, specifically, with those implemented as a binary tree such
             as <i>priority queue</i>, <i>set</i>, or <i>map</i>. This is no coincidence. <i>Set</i>, for example, maintains the collection ordered
             at every moment. Yes, the structure that allows you to <b>search</b> when you have some element. If you are thinking of a solution
-            that requires to <b>sort</b> after every single operation, maybe you need a priority queue instead.
+            that requires <b>sorting</b> after every single operation, maybe you need to accomplish the solution with a data structure, such as a
+            priority queue or a multiset.
         </p>
 <!--
         <p class="subtitle" id="sec_std-sort">Built-in <i>sort</i> C++ function</p>
@@ -118,7 +119,7 @@
             a certain element (usually, a number) appears on the original shuffled list. Based on that, it is possible to compute how many
             elements are before (lower) than that one, how many of that one there is, and how many are after (greater than) it.
             <br>
-            The information of the counting is used to place the elements on their final position.
+            The information of the counting is used to place the elements in their final position.
         </p>
         <hr>
         <p class="text">
@@ -129,7 +130,7 @@
             <br><br>
             <span class="text-code">[ 1, 7, 2, 3, 2, 5, 6, 1, 7, 9, 8, 9, 0, 1, 6, 6 ]</span>
             <br><br>
-            It can be seen that there are 16 elements (its size), but the elements can be in the interval \( [0,9] \), so the range is 10, this is,
+            It can be seen that there are 16 elements (its size), but the elements can be in the interval \( [0,9] \), so the range is 10 ( \(val_{max} - val_{min} + 1 \) ), this is,
             there are only 10 possibilities for a random element to be. No matter how many elements the original collection has, every single one
             of them only can be one of the numbers 0-9. For this collection counting sort could be a good option.
             <br><br>
@@ -148,24 +149,24 @@
         </p>
         <hr>
         <p class="text">
-            How does counting sort works?
+            How does counting sort work?
             <br><br>
             It works in, essentially, three steps:
             
             <br><br><br>
             <span class="big-number">1st Step</span>
             <br>
-            Count the ocurrences of every element.
+            Count the occurrences of every element.
             <br><br>
             Go through the entire arrangement once, and increase the mapping of the \( a_i \)-th element. Traditionally this can be done in
-            other array with the size of the range; e.g., on the array
+            another array with the size of the range; e.g., on the array
             <br><br>
             <i>list = </i> <span class="text-code">[ 1, 7, 2, 3, 2, 5, 6, 1, 7, 9, 8, 9, 0, 1, 6, 6 ]</span>
             <br><br>
-            you can index all the elements on a <span class="text-code">vector&lt;int&gt;(10,0)</span>, but you can also implement it mapping
+            You can index all the elements on a <span class="text-code">vector&lt;int&gt;(10,0)</span>, but you can also implement it by mapping
             directly the keys with a <span class="text-code">map</span> if you want to, or every other implementation detail you find.
             <br><br>
-            In our example, let be <i>count</i> the array with the size of the range of numbers in list:
+            In our example, let be <i>count</i> the array with the size of the range of numbers in the list:
             <br><br>
             <i>count = </i> <span class="text-code">[ 1, 3, 2, 1, 0, 1, 3, 2, 1, 2 ]</span>
             <br><br>
@@ -176,21 +177,21 @@
             <br>
             We know that our sorting will have all the 0's first, then all the 1's, then all the 2's, and so on.
             <br>
-            There is a pattern, so we can just compute where will be the first ocurrence of every digit (and all the left digits of the same),
-            this by adding every element in <i>count</i> \( a_i = a_i + a_{i-1} \):
+            There is a pattern, so we can just compute where the first occurrence of every digit is (and all the left digits of the same),
+            by adding every element in <i>count</i> \( a_i = a_i + a_{i-1} \):
             <br><br>
             <i>count = </i> <span class="text-code">[ 1, 4, 6, 7, 7, 8, 11, 13, 14, 16 ]</span>
             <br><br>
             We can see that <span class="text-code">count[ count.size()-1 ] = list.size() </span>. This happens every time and makes sense because
-            we're calculating the acummulated of all elements in ascending order, so the acummulated at the last position have to be the size (number)
-            of elements we originally have.
+            we're calculating the accumulation of all elements in ascending order, so the accumulation at the last position has to be the size (number)
+            of elements we originally had.
 
             <br><br><br>
             <span class="big-number">3rd Step</span>
             <br>
-            Now we can just go through all <i>count</i> at the same time we go through <i>list</i> with a two pointers method and construct the
-            sorted array. Doing this can be on many variants, you can use de acummulated to do queries instead of reconstructing the array because you
-            may know in which position is certain element, or use the original <i>count</i> (before acummulated) and reconstruct <i>list</i>
+            Now we can just go through all <i>count</i> at the same time we go through <i>list</i> with a two-pointers method and construct the
+            sorted array. Doing this can be done on many variants, you can use the accummulated to do queries instead of reconstructing the array because you
+            may know in which position a certain element is, or use the original <i>count</i> (before accummulated) and reconstruct <i>list</i>
             <span class="text-code">while( count[i] ) list[j++] = i;</span> . It depends a lot on the implementation and the purpose.
             <br><br>
             <i>list = </i> <span class="text-code">[ 0, 1, 1, 1, 2, 2, 3, 5, 6, 6, 6, 7, 7, 8, 9, 9 ]</span>
@@ -214,12 +215,12 @@
             Radix Sort also uses a particular way to sort that isn't based on comparison, it sorts based on the <b>place value</b> of
             the numbers in the list.
             <br><br>
-            Also known as <i>bucket sort</i> because the algorithm works with queue's named buckets, as you <i>throw</i> numbers at them.
+            Also known as <i>bucket sort</i> because the algorithm works with queues named buckets, as you <i>throw</i> numbers at them.
             <br>
             It's important to know, as well, that the radix is the base of the numeral system we're working with. Decimal is radix 10,
-            binary system is radix 2, hexadecimal system is radix 16, for example. The comparison-based sorting algorithms can sort everything,
+            binary system is radix 2, and hexadecimal system is radix 16, for example. The comparison-based sorting algorithms can sort everything,
             but Counting and Radix sort can sort only numbers and letters (in lexicographical order). In that case, the radix of the alphabet is 26,
-            that means there are only 26 lettes in the alphabet.
+            which means there are only 26 letters in the alphabet.
             <br><br>
             Radix Sort works well on collections with numbers of many digits, not only one or two. (Or with strings)
         </p>
@@ -227,7 +228,7 @@
         <hr>
 
         <p class="text">
-            How does it works?
+            How does radix sort work?
             <br><br><br>
             <span class="big-number">1st Step</span>
             <br>
@@ -235,7 +236,7 @@
             
             <br><br><br>
             <span class="big-number">2nd Step</span>
-            <b>Collect</b>: Extract the items from the queue's neatly. Extract them on the original list again.
+            <b>Collect</b>: Extract the items from the queues neatly. Extract them from the original list again.
             <br>
             
             <br><br><br>
@@ -247,11 +248,11 @@
         <hr>
 
         <p class="text">
-            The complexity of radix sort is \[ O(n \, k) \], let \( k \) be the radix of the numbers in the original list. This is because we iterate
-            <i>radix</i> times over the original array <i>digits</i> times (but <i>digits</i> it's a constant), after that the algorithm it's done.
+            The complexity of radix sort is \[ O(nk) \], let \( k \) be the radix of the numbers in the original list. This is because we iterate
+            <i>radix</i> times over the original array <i>digits</i> times (but <i>digits</i> are a constant), after that the algorithm is done.
             <br>
             The space complexity of counting sort is \[ O_S( n ) \], because you need an additional collection of the same size as the original.
-            It's using different queue's instead of another array, but it's still a collection of the same than the original.
+            It's using different queues instead of another array, but it's still a collection of the same as the original.
         </p>
 
         <hr>
@@ -261,12 +262,12 @@
         <hr>
 
         <p class="text">
-            Knowing this algorithms can't be really useful when we know there are implemented and well tested sorting algorithms
-            everywhere, but knowing how they works can be a powerful tool for the competitive programmer.
+            Knowing these algorithms can't be useful when we know there are implemented and well-tested sorting algorithms
+            everywhere, but knowing how they work can be a powerful tool for the competitive programmer.
             <br><br>
             The body of knowledge the competitive programmer must have contains a lot of algorithms, topics, and techniques that prepare him for every
-            challenge he could face on a contest. Having this knowledge and be able to use it wisely for specific solutions can be
-            the difference between the competitor who achieves to reach next level, and the one who doesn't.
+            challenge he could face in a contest. Having this knowledge and being able to use it wisely for specific solutions can be
+            the difference between the competitor who achieves to reach the next level, and the one who doesn't.
         </p>
 
         <p class="subtitle" id="sec_practice">Problems to practice!</p>
