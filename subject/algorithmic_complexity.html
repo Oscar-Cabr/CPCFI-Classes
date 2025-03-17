@@ -10,14 +10,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../media/favicon.jpeg" type="image/jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <head>
-        <script type="text/javascript" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-        </script>
-    </head>
-    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                autobreak: true,
+                processEscapes: true,
+                tags: 'ams'
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em',
+                linebreaks: {
+                    automatic: true,
+                    width: '90%'
+                }
+            }
+        };
+    </script>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
     <link rel="icon" href="../media/CPCFI.png " type="image/png">
     <title>Algorithmic Complexity</title>
 </head>
@@ -73,7 +88,7 @@
             <br>
             This number can change a little (sometimes not that little) depending on the programming language
             we're using.
-            <ul class="text">
+            <ul class="list">
                 <li>C++ : \( 10^8 \)</li>
                 <li>Java : \( 10^{7.3} \)</li>
                 <li>Python : \( 10^7 \)</li>
@@ -91,7 +106,7 @@
 
         <p class="text">
             Algorithms can be analyzed from two perspectives:
-            <ul class="text">
+            <ul class="list">
                 <li><b>Time</b> : Measured in units of time (usually seconds) and represents the amount of time needed for an algorithm to complete.</li>
                 <li><b>Memory</b> : Measured in units of memory (usually MB) and represents the amount of memory used by the algorithm.</li>
             </ul>
@@ -123,7 +138,7 @@
             but we can do an analysis of its general behavior and make decisions based on that.
             <br><br>
             Some rules:
-            <ul class="text">
+            <ul class="list">
                 <li>Each single operation takes one-time step, its <b>constant</b>: \( +, -, *, /, =, <, >, ==, !=, \) if, switch</li>
                 <li>Each memory access takes exactly one time step.</li>
                 <li>
@@ -159,7 +174,7 @@
             <br><br>
             <img class="bound_image" src="../media/complexity/formal_lower_bound.jpg" alt="Lower bound">
             <br><br><br>
-            \( f(n) = \Theta( g(n) ) \; ; \; c_2 \cdot g(n) \leq f(n) \leq c_1 \cdot g(n) \)
+            <span class="math-eq">\( f(n) = \Theta( g(n) ) \; ; \; c_2 \cdot g(n) \leq f(n) \leq c_1 \cdot g(n) \)</span>
             <br><br>
             <img class="bound_image" src="../media/complexity/formal_lower-upper_bound.jpg" alt="Lower and Upper bound">
             <br><br><br>
@@ -170,7 +185,7 @@
         <p class="text">
             Ordered from the best to the worst one:
 
-            <ol class="text">
+            <ol class="list">
                 <li>
                     \( O(1) \) :<br>
                     Always do the same number of operations.<br>
@@ -234,7 +249,7 @@
         <p class="subtitle" id="sec_practice">Codeforces problems to analyze!</p>
 
         <br>
-        <section class="cf_problem index-list">
+        <section class="cf_problem list">
             <ol>
                 <a href="https://codeforces.com/problemset/problem/266/B" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 266B - Queue at the school</p></li></a>
                 <a href="https://codeforces.com/problemset/problem/1932/A" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1932A - Thorns and Coins</p></li></a>
