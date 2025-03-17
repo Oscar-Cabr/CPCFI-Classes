@@ -293,6 +293,9 @@ a:hover{
     .index{
         font-size: 30px;
     }
+    .index-list li{
+        margin-left: 20px;
+    }
     .index-list li::marker{
         font-size: 30px;
     }
