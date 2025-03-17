@@ -82,6 +82,7 @@ a:hover{
 }
 .supertitle{
     font-size: 100px;
+    margin-bottom: 20px;
     font-family: "Sometype Mono", monospace;
     color: #f5f5f5;
 }
@@ -210,6 +211,8 @@ a:hover{
 }
 .bound_image{
     margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 50px;
     width: 40vw;
     height: auto;
     display: block;
@@ -242,6 +245,7 @@ a:hover{
     }
     .text{
         font-size: 20px;
+        margin: 20px;
     }
     .list{
         font-size: 20px;
@@ -272,11 +276,18 @@ a:hover{
         width: 100%;
         height: auto;
     }
-    .math-eq{
+    .math-L-eq{
         display: block;
         max-width: 100%;
-        font-size: 0.8em;
-        transform: scale(0.9);
+        font-size: 0.85em;
+        transform: scale(0.85);
+        transform-origin: left top;
+    }
+    .math-XL-eq{
+        display: block;
+        max-width: 100%;
+        font-size: 0.75em;
+        transform: scale(0.75);
         transform-origin: left top;
     }
     .index{
