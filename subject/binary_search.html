@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                autobreak: true,
+                processEscapes: true,
+                tags: 'ams'
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em',
+                linebreaks: {
+                    automatic: true,
+                    width: '90%'
+                }
+            }
+        };
+    </script>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    <link rel="icon" href="../media/CPCFI.png " type="image/png">
+    <title>Binary Search</title>
+</head>
+<body class="background">
+
+<a href="../index.html">
+    <img src="../media/CPCFI.png" alt="CPCI Logo" class="floating_image">
+</a>
+
+<main>    
+    <br><br>
+    <section class="floating_solid_band">
+
+        <p class="supertitle">Binary Search</p><br><br>
+
+        <a href="sorting.html"><p class="previous-lesson">Previous lesson: Sorting</p></a>
+
+        <p class="subtitle">Contents</p>
+
+        <ol class="index-list">
+            <li><a href="#sec_searching" class="index">The searching problem</a></li>
+            <li><a href="#sec_implementation" class="index">How to implement Binary Search</a></li>
+            <li><a href="#sec_built-in-functions" class="index">Built-in C++ Binary Search functions</a></li>
+<!--            <li><a href="#sec_BS-is-the-ans" class="index">Binary Search is the answer</a></li>-->
+            <li><a href="#sec_practice" class="index">Problems to practice</a></li>
+        </ol>
+
+        <p class="subtitle" id="sec_searching">The searching problem</p>
+
+        <p class="text">
+            The search problem consists of finding a value contained in a particular set of records.
+            <br><br>
+            No matter the scope we're talking about, searching is a basic operation.
+            <br><br>
+            Let's start with the fact that we have an amount of information, for example, a bunch of numbers. <i>Searching</i> is the general given name
+            for <i>knowing things about my data</i> abstract idea. When you have to explore the information, know about its distribution,
+            if you have a certain element, how many elements of one kind you have, or if you want to get the element itself, you search.
+            <br><br>
+            Depending on what we're searching for, the <i>search</i> operation receives different names:
+            <ul class="list">
+                <li><b>Search</b> - To know if a certain element <u>is</u> in the collection.</li>
+                <li><b>Retrieve</b> - To get the <u>element</u> associated with a certain key.</li>
+                <li><b>Locate</b> - To get the <u>position</u> of a certain element that is in the collection.</li>
+                <li><b>Count</b> - To know how many <u>appearances</u> a certain element has in the collection.</li>
+            </ul>
+        </p>
+        <br>
+        <hr>
+        <p class="text">
+            The way you have stored the information is relevant to how you search for it, and the general purpose of that data collection is also
+            relevant. There are mainly four types of searching depending on this:
+            <ol class="list">
+                <li><b>Secuential:</b> For linear data structures - Linear Search & Binary Search \( O(n), O(log_2(n)) \)</li>
+                <li><b>Direct Access:</b> Hash table - \( O(1) \)</li>
+                <li><b>Tree-indexed:</b> Binary Search Tree - \( O(log_2(n)) \)</li>
+                <li><b>Explosive (rapid growth):</b> Brute force solutions to NP-complete problems, graph search, evaluation of permutation/combinations
+                - TSP, Subset Sum Problem... \( O(2^n), O(n!) \) </li>
+            </ol>
+        </p>
+        <p class="text">
+            We'll be focusing on <b>sequential searching</b>, (usually) when we want to search for an element on a linear collection
+            such as a linked list, or the pretty common <span class="text-code">std::vector</span> the first approach and general method to do so is to
+            check every element from the first index, to the last one. Going through every element once, and evaluating whatever we're interested in.
+            <br><br>
+            This is called <i>linear search</i> (LS). LS is good in its purpose, but as its name shows, have a time complexity of \( O(n) \) being <i>n</i> the collection size,
+            which is too slow most of the time for contest problems, where bounds are usually \( n \leq 10^5 \), with \( 10^5 \) operations to do over <i>n</i>.
+            This means \( 10^{10} \) operations to do in \( 10^8 \) operations per second our second (time-bound limit) let us do.
+            <br><br>
+            LS can be seen as the <i>brute force</i> way to search since it doesn't have any optimizations or... even any strategy. So, of course, there is a better option.
+            <br><br>
+            The efficient LS alternative is called Binary Search (BS).
+        </p>
+
+        <p class="subtitle" id="sec_implementation">How to implement Binary Search</p>
+
+        <p class="text">
+            The classic way to implement Binary Search resembles looking for a word in a dictionary. If you're searching for the word <i>Potato</i>, and you're currently
+            on the letter 'M', it's easy to see you have to look forward, in the interval [N,Z], and discard the elements where you know your word isn't (interval [A,M]).
+            <br><br>
+            That's mainly the reason why your collection needs to be previously sorted, BS uses the information that you're elements have been processed in some way earlier
+            (has been sorted) instead of working with them raw as LS could do. In general, the more you previously prepare the data, the faster can search for it (the proof of this
+            is the Hash table).
+            <br><br>
+            The fastest way to do the previously explained is cutting in half the collections recursively. You compare if the element at the half of your collection is the
+            wanted element, if so, you're done! If not, you need to repeat it on the half that contains the element. If the current (<span class="text-code">mid</span>) element is lower than the <span class="text-code">target</span>, you
+            have to search on the right half, in the other way, search on the left half. Doing these steps continuously will end up finding at some point the target.
+            <br><br>
+            Of course, your implementation must be sensitive to certain corner cases: what happens when the target isn't in the collection?
+            What when you have more than one appearance of the target in the collection?
+            <br><br>
+            A general implementation of BS this way follows:
+            <img class="bound_image" src="../media/binary_search/binary_search(classic).jpg" alt="Classic BS implementation">
+        </p>
+
+        <hr>
+
+        <p class="text">
+            There exists an alternative method to implement BS based on an efficient way to iterate through the elements of the array.
+            The idea is to make <i>jumps</i> and slow the speed when we get closer to the target element.
+            <br><br>
+            The length of these steps follows the main idea of BS, cut it in half.
+            If your collection size is \( n \), the first <i>jump</i> is at position
+            \( \frac{n}{2} \), the next one will be at position \( \text{previous position} + \frac{n}{4} \),
+            the next one \( \text{previous position} + \frac{n}{8} \)
+            and so on until you reach \( \text{previous position} + 1 \), meaning you have potentially passed for every <b>logarithmic jump</b>
+            and virtually, for every element on your collection.
+            <br><br>
+            This algorithm works the same way you can create every number \( n \in [0,2^8-1] \) (\( n \in [0,255] \)) using a byte.
+            Let's say you want to create the number 173, one way to do this is by checking every bit from the left-most position (the most significant one)
+            to the right-most position (the least significant one) and <b>checking</b> if your <i>current number</i> exceeds 173, if so, ignore it because
+            you can only add quantities to your number and there's no way to form a smaller number from a bigger one just adding, if it doesn't exceed it
+            then add that bit to you current number.
+            Let's try this out:
+            <br><br>
+            <b>1.° Iteration</b><br>
+            Current number: 0 \( \rightarrow 00000000\)<br>
+            Current bit: \( 1 << 7 = 128 \)<br>
+            ¿\( 0 + 128 = 128 > 173 \)?<br>
+            <b>No</b> \( \Rightarrow \) Add it.
+            <br><br>
+            <b>2.° Iteration</b><br>
+            Current number: 128 \( \rightarrow 10000000\)<br>
+            Current bit: \( 1 << 6 = 64 \)<br>
+            ¿\( 128 + 64 = 192 > 173 \)?<br>
+            <b>Yes</b> \( \Rightarrow \) Don't add it.
+            <br><br>
+            <b>3.° Iteration</b><br>
+            Current number: 128 \( \rightarrow 10000000\)<br>
+            Current bit: \( 1 << 5 = 32 \)<br>
+            ¿\( 128 + 32 = 160 > 173 \)?<br>
+            <b>No</b> \( \Rightarrow \) Add it.
+            <br><br>
+            <b>4.° Iteration</b><br>
+            Current number: 160 \( \rightarrow 10100000\)<br>
+            Current bit: \( 1 << 4 = 16 \)<br>
+            ¿\( 160 + 16 = 176 > 173 \)?<br>
+            <b>Yes</b> \( \Rightarrow \) Don't add it.
+            <br><br>
+            <b>5.° Iteration</b><br>
+            Current number: 160 \( \rightarrow 10100000\)<br>
+            Current bit: \( 1 << 3 = 8 \)<br>
+            ¿\( 160 + 8 = 168 > 173 \)?<br>
+            <b>No</b> \( \Rightarrow \) Add it.
+            <br><br>
+            <b>6.° Iteration</b><br>
+            Current number: 168 \( \rightarrow 10101000\)<br>
+            Current bit: \( 1 << 2 = 4 \)<br>
+            ¿\( 168 + 4 = 172 > 173 \)?<br>
+            <b>No</b> \( \Rightarrow \) Add it.
+            <br><br>
+            <b>7.° Iteration</b><br>
+            Current number: 172 \( \rightarrow 10101100\)<br>
+            Current bit: \( 1 << 1 = 2 \)<br>
+            ¿\( 172 + 2 = 174 > 173 \)?<br>
+            <b>Yes</b> \( \Rightarrow \) Don't add it.
+            <br><br>
+            <b>8.° Iteration</b><br>
+            Current number: 172 \( \rightarrow 10101100\)<br>
+            Current bit: \( 1 << 0 = 1 \)<br>
+            ¿\( 172 + 1 = 173 > 173 \)?<br>
+            <b>No</b> \( \Rightarrow \) Add it.
+            <br><br>
+            The, the final number is: 173 \( \rightarrow 10101101\)
+            <br><br>
+            If you want to see it like this, we binary searched the number \( 173 \) on the sorted list that contains all the integers between \( [0,255] \).
+            <br><br>
+            As you can see, it's a good idea to use bit manipulation to do the logarithmic jumps over the elements in the collection every time
+            the size of our collection fits the number we're bitwise. Most of the time in contests this bound is \( 10^5 \), and a 32-bit unsigned integer
+            can hold \( \approx 4 \times 10^9 \), so we're good in most of the cases.
+            <br><br>
+            One implementation of BS this way follows, the function <i>check</i> is useful when the problem is more abstract than pure numbers:
+            <img class="bound_image" src="../media/binary_search/binary_search(log-step).jpg" alt="Bitwise logarithmic jumps BS implementation">
+        </p>
+        <p class="text">
+            If Bitwise makes it confusing, there's another equivalent implementation originally made by Antti Laaksonen in <i>Competitive Programmer's Handbook</i>.
+            <img class="bound_image" src="../media/binary_search/binary_search(log-step_antti).jpg" alt="Logarithmic jumps Antti BS implementation">
+        </p>
+
+        <hr>
+
+        <p class="text">
+            We haven't mentioned it before, but as you can see, Binary Search boasts a complexity of:
+            \[ O(log_2(n)) \]
+            Which is surprisingly good when the input grows in size, but let's not celebrate it yet, because we also have said that BS need to accomplish
+            a previous requirement: the collection needs to be sorted, and this adds an extra complexity, so in general we have:
+            \[ T(n) = nlog(n) + log(n) \]
+            Which is visible greater than the alternative LS \( O(n) \).
+            Why use binary search then?
+            <br><br>
+            In general, the search operation is often used more than once, even more in contests. Let's suppose you have an input of size \( n \leq 10^5 \),
+            where you have to make \( q \leq 10^5 \) queries over \( n \). This means, in other words, that you have to do \( q \) operations over \( n \).
+            If the operation is LS, then you have to LS \( q \) times over \( q \), which can be translated as
+            \[ q \times O(n) = 10^5 \times 10^5 = 10^{10} > 10^8\]
+            that won't pass on complexity because the solutions complexity is \( O(n^2) \).
+            <br>
+            On the other hand, if we use BS instead, we have to sort <b>once</b> (pre-processing), then all the queries will be on logarithmic time:
+            \[ O(nlog(n)) + q \times O(log(n)) \]
+            that is
+            \[ 10^5 \times log_2(10^5) + 10^5 \times log_2(10^5) = \]
+            \[ = 2 \times 10^5 \times 17 = 32 \times 10^5 < 10^8 \]
+            Clearly better with a solution complexity \( O(nlog(n)) \).
+        </p>
+
+        <p class="subtitle" id="sec_built-in-functions">Built-in C++ Binary Search functions</p>
+
+        <p class="text">
+            It is important for us to know how BS works, and how to implement it correctly. But as competitors, we must be fast while implementing solutions
+            and we may know the C++ implemented functions to BS.
+            <br><br>
+            There are three of them, they're defined as follows:
+            <ul class="list">
+                <li><span class="text-code">std::binary_search</span></li>
+                <li><span class="text-code">std::lower_bound</span></li>
+                <li><span class="text-code">std::upper_bound</span></li>
+            </ul>
+        </p>
+        <hr>
+        <p class="text">
+            <b>binary_search</b>
+            <br>
+            Default definition:
+            <br>
+            <span class="text-code">bool binary_search(ForwardIterator first, ForwardIterator last, const T& val);</span>
+            Custom comparator definition:
+            <br>
+            <span class="text-code">bool binary_search(ForwardIterator first, ForwardIterator last, const T& val, Compare comp);</span>
+            <i>Test if value exists in sorted sequence</i>.
+            <br>
+            Returns a <span class="text-code">bool</span> (<span class="text-code">true</span>) depending if any of the elements in the range
+            \( [first, last) \) are equivalent to <span class="text-code">val</span>, or <span class="text-code">false</span> otherwise.
+            <br><br>
+            Example: <span class="text-code">if(binary_search(v.begin(),v.end(),5)) cout << "v contains 5!" << endl;</span>
+        </p>
+        <hr>
+        <p class="text">
+            <b>lower_bound</b>
+            <br>
+            Default definition:
+            <br>
+            <span class="text-code">ForwardIterator lower_bound(ForwardIterator first, ForwardIterator last, const T& val);</span>
+            Custom comparator definition:
+            <br>
+            <span class="text-code">ForwardIterator lower_bound(ForwardIterator first, ForwardIterator last, const T& val, Compare comp);</span>
+            <br>
+            Returns an iterator pointing to the first element in the range \( [first, last) \) which does not compare less than <span class="text-code">val</span>.
+            <br>
+            Returns an iterator pointing to the first element <b>greater than, or equal</b> than <span class="text-code">val</span>.
+            <br>
+            If <span class="text-code">val</span> exists, <span class="text-code">lower_bound</span> points to the first occurrence of <span class="text-code">val</span>.
+            If <span class="text-code">val</span> doesn't exist, <span class="text-code">lower_bound</span> points to the first element greater than <span class="text-code">val</span>.
+            <br>
+            If such value doesn't exist (all the elements on the interval compare less than <span class="text-code">val</span>), returns the <span class="text-code">end</span> iterator.
+            <br><br>
+            Example: <span class="text-code">vector&lt;int&gt;::iterator it = lower_bound(v.begin(),v.end(),5);</span>
+        </p>
+        <hr>
+        <p class="text">
+            <b>upper_bound</b>
+            <br>
+            Default definition:
+            <br>
+            <span class="text-code">ForwardIterator upper_bound(ForwardIterator first, ForwardIterator last, const T& val);</span>
+            Custom comparator definition:
+            <br>
+            <span class="text-code">ForwardIterator upper_bound(ForwardIterator first, ForwardIterator last, const T& val, Compare comp);</span>
+            <br>
+            Returns an iterator pointing to the first element in the range \( [first, last) \) which compares greater than <span class="text-code">val</span>.
+            <br>
+            If <span class="text-code">val</span> exists, <span class="text-code">upper_bound</span> points to the element following to the last equal to <span class="text-code">val</span>.
+            If <span class="text-code">val</span> doesn't exist, <span class="text-code">upper_bound</span> points to the first element greater than <span class="text-code">val</span>.
+            <br>
+            If such value doesn't exist (all the elements on the interval compare less or equal than <span class="text-code">val</span>), returns the <span class="text-code">end</span> iterator.
+            <br><br>
+            Example: <span class="text-code">vector&lt;int&gt;::iterator it = upper_bound(v.begin(),v.end(),5);</span>
+        </p>
+        <hr>
+        <p class="text">
+            Let's keep in mind that the returned elements of both <span class="text-code">lower_bound</span> and <span class="text-code">upper_bound</span>
+            are iterators. So, to work with both of them, you need to know how iterators work too. An iterator is like a <i>C pointer</i> in some way, let's keep that in mind.
+            <br><br>
+            Here are some common uses for iterators:
+            <ul class="list">
+                <li>You can know the <b>value</b> your iterator is pointing at using the indirection operator (\(*\)): <span class="text-code">*it</span>.</li>
+                <li>You can use <i>pointer arithmetic</i> adding or subtracting integers to your iterator: <span class="text-code">it++</span>, <span class="text-code">it--</span>.</li>
+                <li>You can know the <b>index</b> where your iterator is pointing to, by subtracting <span class="text-code">it</span> minus <span class="text-code">begin</span> iterator: <span class="text-code">it - v.begin()</span>.</li>
+                <li>You can know the number of appearances of a certain element, by subtracting <span class="text-code">upper_bound</span> minus <span class="text-code">lower_bound</span>.</li>
+            </ul>
+            <br>
+        </p>
+
+<!--        <p class="subtitle" id="sec_BS-is-the-ans">Binary Search is the answer</p>
+
+        <p class="text">
+            Lorem ipsum dolor sit amet...
+        </p>-->
+
+        <p class="subtitle" id="sec_practice">Problems to practice!</p>
+        <br>
+        <section class="cf_problem list">
+            <ol>
+                <a href="https://codeforces.com/problemset/problem/432/A" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 432A - Choosing Teams</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1676/E" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1676E - Eating Queries</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/474/B" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 474B - Worms</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1791/G1" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1791G1 - Teleporters (Easy Version)</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1791/G2" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1791G2 - Teleporters (Hard Version)</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1985/F" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1985F - Final Boss</p></li></a>
+            </ol>
+        <br>
+    </section>
+</main>
+<br><br><br>
+
+</body>
+</html>
