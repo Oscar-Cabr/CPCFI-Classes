@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                autobreak: true,
+                processEscapes: true,
+                tags: 'ams'
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em',
+                linebreaks: {
+                    automatic: true,
+                    width: '90%'
+                }
+            }
+        };
+    </script>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    <link rel="icon" href="../media/CPCFI.png " type="image/png">
+    <title>Dynamic Programming</title>
+</head>
+<body class="background">
+
+<a href="../index.html">
+    <img src="../media/CPCFI.png" alt="CPCI Logo" class="floating_image">
+</a>
+
+<main>    
+    <br><br>
+    <section class="floating_solid_band">
+
+        <p class="supertitle">Dynamic Programming</p><br><br>
+
+        <a href="binary_search.html"><p class="previous-lesson">Previous lesson: Binary Search</p></a>
+
+        <p class="subtitle">Contents</p>
+
+        <ol class="index-list">
+            <li><a href="#sec_recursion" class="index">Recursion</a></li>
+            <li><a href="#sec_dp" class="index">The Dynamic Programming</a></li>
+            <li><a href="#sec_approaches" class="index">How to build a DP</a></li>
+            <li><a href="#sec_practice" class="index">Problems to practice</a></li>
+        </ol>
+
+        <p class="subtitle" id="sec_recursion">Recursion</p>
+
+        <p class="text">
+            One previous knowledge we have to know before starting with Dynamic Programming is <b>recursion</b>.
+            <br><br>
+            Recursion is the process in which a function calls itself directly, or indirectly. The corresponding function is called a recursive function.
+            <br><br>
+            In general, recursion is a versatile and powerful tool that can be used to solve many different types of problems. This, because recursion
+            helps in logic building, <b>recursive thinking</b> helps in solving complex problems by breaking them into smaller subproblems, making easier
+            the process of solving a problem if you shatter it into small pieces, and solve these pieces instead of all the problem, every time you know
+            that you can decompose the original problem into that chunks.
+        </p>
+        <hr>
+        <p class="text">
+            A recursive algorithm takes one step toward a solution, and then, recursively calls itself to move further. The algorithm
+            stops once we reach the solution.
+            <br><br>
+            How to implement recursion on a problem?
+
+            <br><br><br>
+            <span class="medium-number">1st Step</span>
+            <br>
+            <b>Define a base case:</b> Identify the simplest (or base) case for which the solution is known or trivial. This will be the stop
+            condition for the recursion (Preventing it from infinitely calling itself and never-ending). There can be more than one base condition
+            in a recursion.
+            
+            <br><br><br>
+            <span class="medium-number">2nd Step</span>
+            <br>
+            <b>Define a recursive case:</b> Define the problem in terms of smaller subproblems. Break the problem down into smaller versions of
+            itself, and call the function recursively to solve each subproblem. Logic is built in terms of smaller problems. The <b>primary property</b>
+            of recursion is the ability to solve a problem by breaking it down into smaller sub-problems, each of which can be solved in the same way.
+            
+            <br><br><br>
+            <span class="medium-number">3rd Step</span>
+            <br>
+            <b>Ensure the recursion terminates:</b> Make sure that the recursive function eventually reaches the base case, and does not enter
+            an infinite loop, for every valid input. The recursion terminates when the base case becomes true.
+            
+            <br><br><br>
+            <span class="medium-number">4th Step</span>
+            <br>
+            <b>Combine the (sub)solutions:</b> Combine the solutions of the subproblems to solve the original problem.
+        </p>
+        <hr>
+        <p class="text">
+            <i>With great power, comes great responsibility.</i>
+            <br><br>
+            It is important to know the consequences of applying recursion to a problem/algorithm, not all are as beautiful as they seem.
+            <br><br>
+            Recursivity is another approach to iterative functions. Usually, an algorithm that can be thought iterative (code inside a for-while loop)
+            can also be thought as recursive (code inside a recursive function), even when not always a recursive algorithm can translate into an
+            iterative one and vice versa, the recursion is often related/compared to iterative algorithms.
+            <br><br>
+            One of the <b><span class="green-text">advantages</span></b> of using recursion is:
+            <ul class="centered-list">
+                <li>Provides a clean and simple way to write code.</li>
+                <li>Can be more readable and easy to understand. (Simplify complex problems)</li>
+                <li>Some problems are inherited recursively.</li>
+            </ul>
+        </p>
+        <p class="text">
+            But there are also <b><span class="red-text">disadvantages</span></b> to recursion that need to be considered:
+            <ul class="centered-list">
+                <li>Can be less efficient than iterative solutions in terms of memory and performance.</li>
+                <li>Can lead to to stack overflow errors if the recursion depth is too high.</li>
+                <li>Doing (time) complexity analysis could be harder than iterative versions.</li>
+            </ul>
+        </p>
+        <p class="text">
+            The biggest warning about using recursion is the second disadvantage, the call stack. A process is called in every recursive call,
+            and it doesn't end until after all recursive calls get to a base case. If this takes a lot of recursive calls, can lead to a
+            <i>Memory Limit Exceed</i> (MLE) verdict. Because of this, is a good idea to be able to translate every algorithm we recursively implement
+            in it iterative way, just in case the judge doesn't accept it.
+            <br>
+            Also is pretty easy to get exponential time complexities when working with recursion, that's another thing to keep in mind. 
+            <br><br>
+            There exist some algorithms native known as recursively: Hannoi's Towers Problem, DFS graph traversal,
+            <a href="binary_search.html#sec_implementation">Binary Search</a>, sorting algorithms such as Merge Sort or Quick Sort, and
+            Preorder/Inorder/Postorder Tree Traversals...
+            <br><br>
+            Recursion is the basis of other techniques and solving problem paradigms, such as Divide and Conquer and, of course, Dynamic Programming.
+        </p>
+
+        <p class="subtitle" id="sec_dp">The Dynamic Programming</p>
+
+        <p class="text">
+            Dynamic Programming (just <i>DP</i> until now) is a technique and one of the main problem-solving paradigms:
+            <ul class="centered-list">
+                <li>Complete Search</li>
+                <li>Greedy</li>
+                <li>Divide and Conquer</li>
+                <li>Dynamic Programming</li>
+            </ul>
+        </p>
+        <p class="text">
+            DP combines the correctness of complete search and the efficiency of greedy algorithms. Can be applied if the problem
+            can be divided into <b>overlapping subproblems</b> that can be solved independently.
+            There are two uses for DP:
+            <ol class="centered-list">
+                <li><b>Finding an optimal solution:</b> We want to find a solution that is as large as possible,<br> or
+                as small as possible.</li>
+                <li><b>Counting the number of solutions:</b> We want to calculate the total number of<br>possible solutions.
+                Problems of the type <i>How many possible ways are there to do a certain thing?</i></li>
+            </ol>
+        </p>
+        <p class="text">
+            Understanding DP is a milestone in every competitive programmer's career.
+            <br>
+            While the basic idea is simple, the challenge is how to apply DP to different problems. The only way to learn DP is by solving
+            problems that involve DP.
+            <br><br>
+            DP is also the optimization that comes <b>when greedy fails</b>. Both are, naturally, different paradigms that approach one problem
+            in different ways, is common that the first approach from a competitor to a problem is greedy, but when things start to get rough
+            and the local decision becomes abstract or nonviable, DP shows up as a better approach.
+        </p>
+        <hr>
+        <p class="text">
+            DP refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a <a href="#sec_recursion">recursive</a> manner.
+            But it is an optimization over plain recursion, the essence of DP is to <b>avoid repeated calculation</b>.
+            <br><br>
+            The idea is to simply store the results of subproblems so that we do not have to re-compute them when needed later.
+            This simple optimization typically reduces time complexities from exponential to polynomial.
+            <br><br>
+            Not all problems can be solvable with DP. Intuitively, those that can be solved with DP are problems with <b>overlapping subproblems</b>
+            so we can avoid the redundancy on them.
+            <br>
+            <b>DP is not magic! It's the result of smart recursion + storage.</b>
+        </p>
+        <hr>
+        <p class="text">
+            When to use DP?
+
+            <br><br><br>
+            <span class="big-number">1st Case</span>
+            <br>
+            <b>The problem has an optimal substructure:</b> A given problem is said to have Optimal Substructure Property if the optimal solution
+            of the given problem can be obtained by using the optimal solution to its subproblems instead of trying every possible way to solve
+            the subproblems.
+            <br><br>
+            This property is utilized to plan dynamic programming calculations that tackle streamlining issues by separating them into more
+            modest subproblems and afterward consolidating the answers for those subproblems to get an answer for the first issue.
+            To show this thought all the more officially, we should assume we disapprove of an ideal arrangement \( S^* \)
+            and a bunch of subproblems \( S_1, S_2, \dots, S_n \). On the off chance that the ideal answer for the issue
+            can be developed from the ideal answers for the subproblems, then the issue displays the ideal base property.
+            \[ S^* = S_1 \cup S_2 \cup \dots \cup S_n \]
+            
+            <br><br><br>
+            <span class="big-number">2nd Case</span>
+            <br>
+            <b>The problem have overlapping subproblems:</b> Like Divide and Conquer, Dynamic Programming combines solutions to sub-problems.
+            Dynamic Programming is mainly used when solutions to the same subproblems are needed again and again. In dynamic programming,
+            computed solutions to subproblems are stored in a table so that these don't have to be recomputed.
+            So Dynamic Programming is not useful when there are no common (overlapping) subproblems because there is no point in storing the solutions if they are not needed again.
+            <br><br>
+            For example, <a href="binary_search.html">Binary Search</a> doesn't have common subproblems.
+            If we take the example of following a recursive program for Fibonacci Numbers, there are many subproblems that are solved again and again.
+        </p>
+
+        <p class="subtitle" id="sec_approaches">How to build a DP</p>
+
+        <p class="text">
+            There are two <b>approaches</b> (ways to store the values so that these values can be reused) when we're using DP for solving overlapping
+            subproblems:
+            <ul class="centered-list">
+                <li>Memoization (Top-Down)</li>
+                <li>Tabulation (Bottom-Up)</li>
+            </ul>
+        </p>
+        <hr>
+        <p class="text">
+            <b>Memoization</b>
+            <br><br>
+            Memoization is a <b>recursive</b> approach where the solution to a problem is built by solving smaller subproblems first.
+            <br>
+            It uses a <i>memo table</i> (DP storage) to store results already computed.
+            <br>
+            The recursion starts from the <b>top</b> (original problem) and breaks it down into smaller sub-problems (Top \(\rightarrow\) Down).
+            <br><br>
+            How to implement it?
+            <ol class="centered-list">
+                <li>Define a recursive function that solves the problem.</li>
+                <li>Check the memo table before computing a subproblem.
+                    <ul>
+                        <li>If the result is already stored, return it.</li>
+                        <li>Otherwise, compute it recursively and store the resutl.</li>
+                    </ul>
+                </li>
+                <li>Handle the smallest (base) cases.</li>
+            </ol>
+        </p>
+        <p class="text">
+            <span class="green-text">Advantages:</span>
+            <ul class="centered-list">
+                <li>Intuitive to implement. (Follows natural problem breakdown)</li>
+                <li>Only computes necessary subproblems. (Lazy evaluation)</li>
+            </ul>
+        </p>
+        <p class="text">
+            <span class="red-text">Disadvantages:</span>
+            <ul class="centered-list">
+                <li>Recursion overhead. (Stack overflow for deep recursion)</li>
+                <li>Slower than tabulation due to function calls.</li>
+            </ul>
+        </p>
+        <hr>
+        <p class="text">
+            <b>Tabulation</b>
+            <br><br>
+            Tabulation is a <b>iterative</b> approach where solutions to subproblems are computed in a fixed order, usually from smallest
+            to largest.
+            <br>
+            It fills a table (DP array) in a structured way, starting from base cases and building up to the final solution (Bottom \(\rightarrow\) Up).
+            <br><br>
+            How to implement it?
+            <ol class="centered-list">
+                <li>Initialize a DP table (<span class="text-code">dp[]</span>) with base cases.</li>
+                <li>Iterate through states in a predefined order. (loop)</li>
+                <li>Compute each state using previously computed states.</li>
+            </ol>
+        </p>
+        <p class="text">
+            <span class="green-text">Advantages:</span>
+            <ul class="centered-list">
+                <li>No recursion overhead. (Faster in practice)</li>
+                <li>Often more space-optimizable. (e.g., using only last few states)</li>
+            </ul>
+        </p>
+        <p class="text">
+            <span class="red-text">Disadvantages:</span>
+            <ul class="centered-list">
+                <li>May compute unnecessary subproblems.</li>
+                <li>Requires careful ordering of computations.</li>
+            </ul>
+        </p>
+        <hr>
+        <p class="text">
+            <b>State Transition Styles</b>
+            <br><br>
+            The terms <b>push</b> and <b>pull</b> describes how DP state transitions are formulated in both memoization and tabulation.
+            <br><br>
+            <b>Pull DP</b>
+            <br>
+            Pull from previous states. The current state <span class="text-code">dp[i]</span> pulls its value from previously computed
+            states. What previous states contribute to <span class="text-code">dp[i]</span>?
+            <br>
+            Current state pulls from past.
+            <br>
+            How do I compute <span class="text-code">dp[i]</span>?
+            <br>
+            Backward-looking.
+            <br>
+            <span class="text-code">dp[i] = dp[i-1] + dp[i-2]</span> \(\leftarrow\) Pulls from i-1 and i-2
+            <br><br>
+            <b>Push DP</b>
+            <br>
+            Push to future states. The current state <span class="text-code">dp[i]</span> pushes its value to future states. What future
+            states does <span class="text-code">dp[i]</span> influence?
+            <br>
+            Current state pushes to future.
+            <br>
+            Forward-looking.
+            <br>
+            Where does <span class="text-code">dp[i]</span> contribute?
+            <br>
+            <span class="text-code">dp[i+1] += dp[i]; dp[i+2] += dp[i]</span> \(\leftarrow\) Pushes to i+1 and i+2
+        </p>
+        <hr>
+        <p class="text">
+            Steps to solve DP problems:
+            <ol class="centered-list">
+                <li><b>Identify if DP is applicable.</b> Optimal substructure / Overlapping subproblems.</li>
+                <li><b>Define DP state.</b> What does <span class="text-code">dp[i][j]</span> represent? A state can be defined as the set of parameters that can uniquely identify a certain position or standing in the given problem. This set of parameters should be as small as possible to reduce state space.</li>
+                <li><b>Formulate the recurrence relation.</b> How does <span class="text-code">dp[i]</span> depend on other states, how to pass from <span class="text-code">dp[i]</span> to <span class="text-code">dp[i+1]</span>. Formulating a relation between the states is the hardest part of solving a Dynamic Programming problem and requires a lot of intuition, observation, and practice.</li>
+                <li><b>Set base cases.</b> Smallest, intuitive, obvious subproblems.</li>
+                <li><b>Choose memoization or tabulation.</b> Top-Down or Bottom-Up approach, recursive or iterative implementation.</li>
+            </ol>
+        </p>
+
+        <p class="subtitle" id="sec_practice">Problems to practice!</p>
+        <br>
+        <section class="cf_problem list">
+            <ol>
+                <a href="https://cses.fi/problemset/task/1633" target="_blank"><li><img class="CSES_icon" src="../media/CSES-logo.jpg" alt="CSES"><p class="text">CSES 1633 - Dice Combinations</p></li></a>
+                <a href="https://cses.fi/problemset/task/1635" target="_blank"><li><img class="CSES_icon" src="../media/CSES-logo.jpg" alt="CSES"><p class="text">CSES 1635 - Coin Combinations I</p></li></a>
+            </ol>
+        <br>
+    </section>
+</main>
+<br><br><br>
+
+</body>
+</html>
