@@ -114,6 +114,12 @@ a:hover{
     color: #f5f5f5;
     text-align: justify;
 }
+.green-text{
+    color: #7CFC00;
+}
+.red-text{
+    color: red;
+}
 .text ul{
     font-family: "Sometype Mono", monospace;
     margin-left: 500px;
