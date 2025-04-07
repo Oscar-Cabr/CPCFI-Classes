@@ -234,6 +234,9 @@ a:hover{
 .cf_icon{
     height: 40px;
     width: auto;
+}.CSES_icon{
+    height: 30px;
+    width: auto;
 }
 @media screen and (max-width: 767px){
     nav{
@@ -301,6 +304,9 @@ a:hover{
     }
     .cf_icon{
         height: 25px;
+    }
+    .CSES_icon{
+        height: 15px;
     }
     .cf_problem ol li p{
         margin-left: 5%;
