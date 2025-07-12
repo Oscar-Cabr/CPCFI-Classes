@@ -1,0 +1,68 @@
+- Make "bibliography" file on main tree project.
+    * Add books on pdf format.
+    * Links to pages. (Geeks for Geeks, USACO Guide, ...)
+- Make "subject/math.html" and "subject/math/" (as dp) to profundize in math topics. (as binpow, prime decomposition...)
+- Make "subject/greedy.html".
+    * Link line 86 of "subject/sorting.html" to "Greedy" page.
+CSS/styles.css
+    - Clean "CSS/styles.css" from reutilization.
+        * Keep only in-use styles.
+    - Make CSS styles for referencing.
+        * "References" generic section.
+        * Cite reference as "[1]" in middle-article.
+    - Make previous/following lesson buttons responsive for small screens.
+    - Search different font for previous/following lesson buttons.
+    - Add subtitle style for <hr> tags.
+        * "Memoization / Tabulation" sections in "subject/dynamic_programming", "How does radix sort work?", "Algorithmic Compexity" (on both Radix/Counting Sort) sections in "subject/sorting.html".
+        * "Algorithmic Complexity", "binary_search", "lower_bound", "upper_bound", "Using Iterators" sections in "subject/binary_search.html".
+README.md
+    - List of the topics developed as classes.
+    - Explain that the classes follow a certain order.
+    - Explain that the classes are explanations and problems to practice, but no sheet presentations.
+subject/algorithmic_complexity.html
+    - Made "Big O notation" original images. (4 images: lower_bound, upper_bound, both together (2))
+    - Made original graphics where "Most common complexities" are shown.
+    - Add "Complexity classes".
+        * "Clases de complejidad". (Solano)
+        * P, NP, máquinas de Turing.
+    - Add "References" section.
+subject/sorting.html
+    - Check implementation of radix/counting sort shown.
+    - Pending: "Custom sorting" section.
+        * What is a custom comparator.
+        * Explain lambda functions.
+        * Examples of implementation in code.
+    - Pending: "std::sort and iterators" section.
+    - Improve: "Radix Sort" section.
+    - Add "References" section.
+subject/data_structures_and_cpp_stl.html
+    - Pending.
+        * Explain the problem with the call stack: Why do we preffer to use iterative algorithms over recursive ones.
+    - Link line 94 of "subject/sorting.html" to "Binary Search Tree" section.
+    - Link line 116 of "subject/binary_search.html" to "Hash table" section.
+subject/dynamic_programming.html
+    - Pending.
+        * Create another "subject/dynamic_programming/" file to go deeper on another topics as ".../bitmask_dp".
+        * DP turn NP complexities into pseudo-P. That's why DP algorithms has exponential complexities.
+        * Create original image of the decision tree while explaining Fibonacci problem (complexity 2^n).
+        * Add "Common problems" section. (Solution and short talked solution) ¿Do another page for this?
+subject/bit_manipulation.html
+    - Pending.
+        * Why to bit?
+        * Binary representation of numbers.
+        * Differences between bit manipulation, bitwise and bitmask.
+        * Bit shifting, and, or, xor.
+        * Built-in C++ bitwise functions.
+        * Some examples of bit operations.
+        * Bitset and numbers as natural bitsets.
+    - Link apropiate lines on "subject/binary_search.html" page.
+subject/binary_search.html
+    - Pending: "Binary Search is the answer" section.
+
+CURRENT LESSONS ORDER:
+1. Algorithmic complexity.
+-. Data structures and C++ STL.
+2. Sorting.
+-. Bit manipulation.
+3. Binary Search.
+4. Dynamic programming.
