@@ -51,45 +51,97 @@
         <p class="subtitle">Contents</p>
 
         <ol class="index-list">
-            <li><a href="#sec_usage-of-ds" class="index">The usage of DS in contests</a></li>
+<!--            <li><a href="#sec_usage-of-ds" class="index">The usage of DS in contests</a></li> -->
             <li><a href="#sec_vector" class="index">Vector</a></li>
             <li><a href="#sec_stack" class="index">Stack</a></li>
             <li><a href="#sec_queue" class="index">Queue</a></li>
-            <li><a href="#sec_deque" class="index">Deque</a></li>
+<!--            <li><a href="#sec_deque" class="index">Deque</a></li>
             <li><a href="#sec_heap" class="index">Heap</a></li>
             <li><a href="#sec_bst" class="index">Binary Search Tree</a></li>
             <li><a href="#sec_hashtable" class="index">Hashtable</a></li>
             <li><a href="#sec_bitset" class="index">Bitset</a></li>
-            <li><a href="#sec_iterators" class="index">Iterators</a></li>
+            <li><a href="#sec_iterators" class="index">Iterators</a></li>-->
             <li><a href="#sec_pair" class="index">Pair</a></li>
             <li><a href="#sec_tuple" class="index">Tuple</a></li>
+            <li><a href="#sec_array" class="index">Array</a></li>
+            <li><a href="#sec_practice" class="index">Problems to practice</a></li>
         </ol>
 
-        <p class="subtitle" id="sec_usage-of-ds">The usage of DS in contests</p>
-
+        <!--        <p class="subtitle" id="sec_usage-of-ds">The usage of DS in contests</p>
+        
         <p class="text">
             Lorem ipsum dolor sit amet...
-        </p>
+        </p>-->
 
         <p class="subtitle" id="sec_vector">Vector</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            There are a few collections in C++ that allow the programmer to work with simple linear collections of data: vector, list and <a href="#sec_array"><b>array</b></a>. Even so, vector is the preferred one by competitive programmers.
+            <br><br>
+            <span class="text-code">std::vector</span> is known as a dynamic array, this means that, exactly as an array, internally it is a contiguous block of memory.
+            <br><br>
+            This allow us to access middle elements in constant time. That's basically why it is preferred. A good example of this is with pointer arithmetics, we can declare a pointer <span class="text-code">p</span> pointing to the first memory location of an vector <span class="text-code">v</span> and access to the i-th element of the vector with <span class="text-code">*(p + i)</span> in constant time.
+            <br>
+            <span class="text-code">vector&lt;int&gt v = {1,2,3}; int* p = &v[0];</span>
+            <br>
+            So you can modify the vector through the pointer like: <span class="text-code">p[1] = 42;</span> will be the same as doing: <span class="text-code">v[1] = 42</span>.
+            <br>
+            And so you can modify <span class="text-code">k</span> indexed position like: <span class="text-code">*(p + k)</span>, that would be the same as <span class="text-code">v[k]</span>.
+            <br><br>
+            Also it is called dynamic because it can change its size in execution time. When it needs more space, it allocates a new block of memory, copies the old elements to the new block and frees the old one. One thing to have in mind about this, is that, if you know the maximum size of your vector, you can reserve it since its declaration giving an argument to the constructor, like this: <span class="text-code">vector&lt;int&gt v(1000);</span> this will reserve space for 1000 elements, so it won't have to allocate more space in the future. Doing that you'll save time than if you do <span class="text-code">push_back()</span> with every element you want.
+            <br>
+            As an extra tip, you can also give a second argument to the constructor to initialize all the elements of the vector with a specific value. For example, <span class="text-code">vector&lt;int&gt v(1000, 0);</span> will create a vector of size 1000 with all elements initialized to 0. This can be pretty useful during contests when you need to initialize a vector with a specific value in order to work with it later.
+            <br><br>
+            One thing to keep in mind is that the vector will not allocate more space than it needs, so if you want to add an element to the end of the vector, it will take amortized constant time, but if you want to add an element in the middle of the vector, it will take linear time because it has to move all the elements after that position. We have to ve careful with this, because if we are adding elements in the middle of the vector, it can take a lot of time, this is directly related to <span class="text-code">insert()</span> and <span class="text-code">erase()</span> functions.
+            <br><br>
+            One kind of problems requires to work with bidimensional arrays, grids or matrices. So we can use a vector of vectors declaring it like: <span class="text-code">vector&lt;vector&lt;int&gt;&gt v(n, vector&lt;int&gt;(m,0));</span> where <span class="text-code">n</span> is the number of rows and <span class="text-code">m</span> is the number of columns. This will create a vector of size <span class="text-code">n</span> with each element being a vector of size <span class="text-code">m</span> initialized in 0.
+            <br><br>
+            The view of this vector of vector, but of pairs should be something like this:
         </p>
+            <img class="bound_image" src="../media/data_structures/vvii_repre.png" alt="Vector of vectors view">
+        <p class="text">
+            And so a general overview of the vector usage can be seen in the following code, it could be useful to understand how valid sintaxis is used in C++:
+        </p>
+            <img class="bound_image" src="../media/data_structures/vector_use.png" alt="Vector of vectors view">
 
         <p class="subtitle" id="sec_stack">Stack</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            The stack is one of the most known and used <b>linear</b> data structures.
+            <br><br>
+            It is a <b>Last In First Out</b> (LIFO) structure (or <b>First In Last Out</b> FILO).
+            <br>
+            Which means that the last element added to the stack will be the first one to be removed. Also, this means that the first element added to the stack will be the last one to be removed.
+            <br><br>
+            This can be confusing by hearing it just like that, but it is easier to understand if we think about it as a stack of something in real life.
+            <br>
+            For example, lets think about a stack of pancakes, when you have a pancake ready, you put it on the stack. With no choice, on the top of the stack. So, when you want to eat a pancake, you take the one on the top of the stack, which is the last one you put there. You cannot take the one on the bottom of the stack, because you have to take all the pancakes on top of it first. It would be a mess!
         </p>
+            <img class="bound_image" src="../media/data_structures/stack_of_pancakes.webp" alt="A stack of pancakes">
+        <p class="text">
+            The stack implementation in C++ is done with <span class="text-code">std::stack</span> class. And some of its general usage can be seen in the following code:
+        </p>
+            <img class="bound_image" src="../media/data_structures/stack_use.png" alt="Usage of stack">
+
 
         <p class="subtitle" id="sec_queue">Queue</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            Queue is the second most known and used <b>linear</b> data structure.
+            <br><br>
+            It is a <b>First In First Out</b> (FIFO) structure (or <b>Last In Last Out</b> LILO).
+            <br>
+            This means tat the first element added to the queue will be the first one to be removed. Also, this means that the last element added to the queue will be the last one to be removed.
+            <br><br>
+            For undestanding purposes, we can think about it as a queue of people waiting for something, for example, at the supermarket. The first person to arrive to the queue will be the first one to be served, and the last person to arrive will be the last one to be served.
         </p>
+            <img class="bound_image" src="../media/data_structures/supermarket_queue.avif" alt="A queue of people">
+        <p class="text">
+            The queue implementation in C++ is done with <span class="text-code">std::queue</span> class. And some of its general usage can be seen in the following code: 
+        </p>
+            <img class="bound_image" src="../media/data_structures/queue_use.png" alt="Usage of queue">
 
-        <p class="subtitle" id="sec_deque">Deque</p>
+<!--        <p class="subtitle" id="sec_deque">Deque</p>
 
         <p class="text">
             Lorem ipsum dolor sit amet...
@@ -123,25 +175,57 @@
 
         <p class="text">
             Lorem ipsum dolor sit amet...
-        </p>
+        </p>-->
 
         <p class="subtitle" id="sec_pair">Pair</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            This class couples together a pair of values, which may be of different types. The individual values can be accessed through its public members <span class="text-code">first</span> and <span class="text-code">second</span>.
+            Pairs are a particular case of a <a href="#sec_tuple"><b>tuple</b></a>, which is a generalization of a pair to an arbitrary number of elements.
+            <br><br>
+            You can declare a pair like: <span class="text-code">pair&lt;int, string&gt; p;</span> or <span class="text-code">pair&lt;int, string&gt; p = {1, "hello"};</span> or <span class="text-code">auto p = make_pair(1, "hello");</span>.
+            <br><br>
+            You can access to its elements with <span class="text-code">p.first</span> and <span class="text-code">p.second</span> members.
+            <br><br>
+            And also you can use pairs inside of others data structures, such as vectors or maps. For example, a vector of pairs can be declared like: <span class="text-code">vector&lt;pair&lt;int, string&gt;&gt v;</span> and you can make pairs by putting both values you want to make a pair with inside a pair of keys, so you can work with it like: <span class="text-code">v.push_back({1,"one"});</span>.
         </p>
 
         <p class="subtitle" id="sec_tuple">Tuple</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            A tuple is an object capable to hold a collection of elements. Each element can be of a different type.
+            <br><br>
+            You can declare a tuple like: <span class="text-code">tuple&lt;int, string, double&gt; t(1,"hello",3.14);</span> or <span class="text-code">auto t = make_tuple(1, "hello", 3.14);</span>.
+            <br><br>
+            You can access to its elements with <span class="text-code">get&lt;0&gt;(t)</span>, <span class="text-code">get&lt;1&gt;(t)</span> and <span class="text-code">get&lt;2&gt;(t)</span> functions.
+            <br><br>
+            As like pairs, you can use tuples inside of others data structures, such as vectors or maps. For example, a vector of tuples can be declared like: <span class="text-code">vector&lt;tuple&lt;int, string, double&gt;&gt v;</span> and you can make tuples by putting all the values you want to make a tuple with inside a pair of keys, so you can work with it like: <span class="text-code">v.push_back(make_tuple(1,"one",2.0));</span> or <span class="text-code">v.push_back({1,"one",2.0});</span>.
+            <br><br>
+            We have used tuples with only three values, but you can use as many values as you want, just by adding more types to the tuple declaration.
+        </p>
+
+        <p class="subtitle" id="sec_array">Array</p>
+
+        <p class="text">
+            Arrays are fixed-size sequence containers: they hold a specific number of elements ordered in a strict linear sequence.
+            <br><br>
+            Internally, an array does not keep any data other than the elements it contains. It is as efficient in terms of storage size as an ordinary array declared with the languague's bracket sintax (<span class="text-code">[]</span>).
+            <br><br>
+            Essentially, an array is a wrapper around a C-style array, which allows the use of STL algorithms and iterators. If you need to use a structure with various members of the same type, an array is a good choice even over a tuple, since it is more efficient in terms of memory usage and it is simplier to access to its elements.
+            <br><br>
+            You can declare an array like: <span class="text-code">array&lt;int, 5&gt; a = {1,2,3,4,5};</span> or <span class="text-code">array&lt;int, 5&gt; a;</span> and then assign values to its elements like: <span class="text-code">a[0] = 1;</span>.
+            <br><br>
+            You can access to its elements with <span class="text-code">a[0]</span>, <span class="text-code">a[1]</span>, <span class="text-code">a[2]</span>, etc.
         </p>
 
         <p class="subtitle" id="sec_practice">Problems to practice!</p>
         <br>
         <section class="cf_problem list">
             <ol>
-                <a href="https://leetcode.com/problems/query-kth-smallest-trimmed-number/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 2343 - Query Kth Smallest Trimmed Number</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/5/C" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 5C - Longest Regular Bracket Sequence</p></li></a>
+                <a href="https://leetcode.com/problems/valid-parentheses/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 20 - Valid Parentheses</p></li></a>
+                <a href="https://leetcode.com/problems/removing-stars-from-a-string/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 2390 - Removing Stars From a String</p></li></a>
+                <a href="https://leetcode.com/problems/daily-temperatures/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 738 - Daily Temperatures</p></li></a>
             </ol>
         <br>
     </section>
