@@ -48,6 +48,9 @@
 
         <p class="supertitle">Data Structures and STL</p><br><br>
 
+        <a href="algorithmic_complexity.html"><p class="previous-lesson">Previous lesson: Algorithmic Complexity</p></a>
+        <a href="sorting.html"><p class="following-lesson">Following lesson: Sorting</p></a>
+
         <p class="subtitle">Contents</p>
 
         <ol class="index-list">
@@ -55,9 +58,9 @@
             <li><a href="#sec_vector" class="index">Vector</a></li>
             <li><a href="#sec_stack" class="index">Stack</a></li>
             <li><a href="#sec_queue" class="index">Queue</a></li>
-<!--            <li><a href="#sec_deque" class="index">Deque</a></li>
-            <li><a href="#sec_heap" class="index">Heap</a></li>
-            <li><a href="#sec_bst" class="index">Binary Search Tree</a></li>
+            <li><a href="#sec_deque" class="index">Deque</a></li>
+            <li><a href="#sec_heap" class="index">Heap (Priority Queue)</a></li>
+<!--            <li><a href="#sec_bst" class="index">Binary Search Tree (Set & Map)</a></li>
             <li><a href="#sec_hashtable" class="index">Hashtable</a></li>
             <li><a href="#sec_bitset" class="index">Bitset</a></li>
             <li><a href="#sec_iterators" class="index">Iterators</a></li>-->
@@ -76,9 +79,11 @@
         <p class="subtitle" id="sec_vector">Vector</p>
 
         <p class="text">
-            There are a few collections in C++ that allow the programmer to work with simple linear collections of data: vector, list and <a href="#sec_array"><b>array</b></a>. Even so, vector is the preferred one by competitive programmers.
+            There are a few collections in C++ that allow the programmer to work with simple linear collections of data: vector, list, forward_list and <a href="#sec_array"><b>array</b></a>. Even so, vector is the preferred one by competitive programmers.
             <br><br>
             <span class="text-code">std::vector</span> is known as a dynamic array, this means that, exactly as an array, internally it is a contiguous block of memory.
+            <br><br>
+            To use vector in C++ add the following import: <span class="text-code">#include &lt;vector&gt</span> or bits library.
             <br><br>
             This allow us to access middle elements in constant time. That's basically why it is preferred. A good example of this is with pointer arithmetics, we can declare a pointer <span class="text-code">p</span> pointing to the first memory location of an vector <span class="text-code">v</span> and access to the i-th element of the vector with <span class="text-code">*(p + i)</span> in constant time.
             <br>
@@ -107,19 +112,21 @@
         <p class="subtitle" id="sec_stack">Stack</p>
 
         <p class="text">
-            The stack is one of the most known and used <b>linear</b> data structures.
+            The stack is one of the most well-known and used <b>linear</b> data structures.
             <br><br>
             It is a <b>Last In First Out</b> (LIFO) structure (or <b>First In Last Out</b> FILO).
             <br>
             Which means that the last element added to the stack will be the first one to be removed. Also, this means that the first element added to the stack will be the last one to be removed.
             <br><br>
-            This can be confusing by hearing it just like that, but it is easier to understand if we think about it as a stack of something in real life.
+            This can be confusing when hearing it just like that, but it is easier to understand if we think about it as a stack of something in real life.
             <br>
             For example, lets think about a stack of pancakes, when you have a pancake ready, you put it on the stack. With no choice, on the top of the stack. So, when you want to eat a pancake, you take the one on the top of the stack, which is the last one you put there. You cannot take the one on the bottom of the stack, because you have to take all the pancakes on top of it first. It would be a mess!
         </p>
             <img class="bound_image" src="../media/data_structures/stack_of_pancakes.webp" alt="A stack of pancakes">
         <p class="text">
             The stack implementation in C++ is done with <span class="text-code">std::stack</span> class. And some of its general usage can be seen in the following code:
+            <br><br>
+            To use stack in C++ add the following import: <span class="text-code">#include &lt;stack&gt</span> or bits library, as the image bellow shows.
         </p>
             <img class="bound_image" src="../media/data_structures/stack_use.png" alt="Usage of stack">
 
@@ -127,33 +134,118 @@
         <p class="subtitle" id="sec_queue">Queue</p>
 
         <p class="text">
-            Queue is the second most known and used <b>linear</b> data structure.
+            The queue is the second most well-known and used <b>linear</b> data structure.
             <br><br>
             It is a <b>First In First Out</b> (FIFO) structure (or <b>Last In Last Out</b> LILO).
             <br>
-            This means tat the first element added to the queue will be the first one to be removed. Also, this means that the last element added to the queue will be the last one to be removed.
+            This means that the first element added to the queue will be the first one to be removed. Also, this means that the last element added to the queue will be the last one to be removed.
             <br><br>
-            For undestanding purposes, we can think about it as a queue of people waiting for something, for example, at the supermarket. The first person to arrive to the queue will be the first one to be served, and the last person to arrive will be the last one to be served.
+            For understanding purposes, we can think about it as a queue of people waiting for something, for example, at the supermarket. The first person to arrive at the queue will be the first one to be served, and the last person to arrive will be the last one to be served.
         </p>
             <img class="bound_image" src="../media/data_structures/supermarket_queue.avif" alt="A queue of people">
         <p class="text">
             The queue implementation in C++ is done with <span class="text-code">std::queue</span> class. And some of its general usage can be seen in the following code: 
+            <br><br>
+            To use queue in C++ add the following import: <span class="text-code">#include &lt;queue&gt</span> or bits library, as can be seen in bellow image.
         </p>
             <img class="bound_image" src="../media/data_structures/queue_use.png" alt="Usage of queue">
 
-<!--        <p class="subtitle" id="sec_deque">Deque</p>
+        <p class="subtitle" id="sec_deque">Deque</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            Deque is one of the most flexible <b>linear</b> data structures.
+            <br><br>
+            <i>Deque</i> stands for <b>Double Ended Queue</b>. Let's remember that a queue allow operations of <i>insertion</i> by one side, while <i>removal</i> from the other side.
+            <br><br>
+            And we can see the standard queue as a <i>simple ended queue</i> in some way.
+            <br>
+            So it's not that hard to stablish that a <b>double</b> ended queue allow both operations in both sides of the DS.
+            <br><br>
+            In a regular deque you can do operations: <span class="text-code">push_back</span>, <span class="text-code">pop_back</span> to interact with the ending, and <span class="text-code">push_front</span>, <span class="text-code">pop_front</span> to interact with the beginning of the DS.
+            <hr>
         </p>
+        <p class="text">
+            C++ implementation of deque also allows to do random access to middle elements on the DS. It must be seen as a <span class="text-code">vector</span>, but with efficient insertion and deletion at the beginning of the sequence, and not only at its end.
+            <br><br>
+            Even tho, internally deque works quite different than vectors.
+            <br>
+            Deque elements can be scattered in different chunks of storage, with the container keeping the necessary information internally to provide direct access to any of its elements in constant time and with a uniform sequential interface through iterators.
+            <br><br>
+            To use deque in C++ add the following import: <span class="text-code">#include &lt;deque&gt</span> or bits library.
+        </p>
+            <img class="bound_image" src="../media/data_structures/deque_use.png" alt="Usage of deque">
 
-        <p class="subtitle" id="sec_heap">Heap</p>
+
+        <p class="subtitle" id="sec_heap">Heap (Priority Queue)</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            Heap is a <b>non-linear</b> data structure. Specifically, it is a particular case of a <b>binary tree</b> structure.
+            <br><br>
+            As we'll see in posterior sections, trees are also a subset of graphs.
+            <br>
+            Let's define a graph in its general form as a mathematical structure of nodes and edges.
+            <br>
+            The, let's define a tree as a particular case of a graph, that accomplish the following characteristics:
+            <ul class="centered-list">
+                <li>It is an undirected graph.</li>
+                <li>It is connected. (It always exist a path between every two vertices)</li>
+                <li>It is acyclic.</li>
+            </ul>
         </p>
+        <p class="text">
+            To build a heap we also need to have in mind a tree with the following conditions:
+            <ul class="centered-list">
+                <li>It is a rooted tree. One vertex is chosen as the root, which give us a sense of direction and hierarchy. So we can have a sense of parent/children relationships.</li>
+                <li>It is a binary tree. This means, every node has at most two childrens.</li>
+            </ul>
+        </p>
+        <p class="text">
+            Finally, we can define the heap as a binary tree who accomplish the following:
+            <ol class="centered-list">
+                <li>It is a complete tree. This means, every level is fully filled, except possibly the last one, and the last level is filled from left to right, leaving no gaps in between.</li>
+                <li>For every node \(u\), except the root, it's accomplished that the value of \(u\)'s father is greater than \(u\)'s value.</li>
+            </ol>
+        </p>
+        <p class="text">
+            The second criteria for a binary tree to be considered as a heap is what makes it a <b>max heap</b>. If we want to build a <b>min heap</b>, we just need to change the second criteria to be that the value of \(u\)'s father is lower than \(u\)'s value.
+            <br><br>
+            To build a heap the follow steps are necessary:
+            <ol class="centered-list">
+                <li>Insert the new element on the first available position. (Deeper left-most gap)</li>
+                <li>Check if new value is higher than its father's one. If so, swap elements; otherwise, insertion stops.</li>
+                <li>If you swap elements, repeat step No. 2 until you reach the root.</li>
+            </ol>
+        </p>
+        <p class="text">
+            Then, to make a deletion from the heap, the following steps are necessary:
+            <ol class="centered-list">
+                <li>Remove the root element.</li>
+                <li>Replace the root with the last element in the heap.</li>
+                <li>Check if new root is lower than its children. If so, swap elements with the highest child; otherwise, deletion stops.</li>
+                <li>If you swap elements, repeat step No. 3 until you reach a leaf node.</li>
+            </ol>
+        </p>
+        <br><hr>
+        <p class="text">
+            As it can be seen, operations in the heap have a complexity of \(O(log \; n)\).
+            <br>
+            In the worst case, both insertion and deletion, have to travel all along tree height's, since our data is stored in a <b>binary</b> tree, the most steps can be done per operation are \(log_2(n)\) steps.
+        </p>
+        <hr>
+        <p class="text">
+            In high level, a heap can be used for a priority queue interface.
+            <br>
+            A priority queue sort its content based on an specific criteria, this usually interest us to be highest element in the collection (we use a <i>max heap</i>), or lowest element in the collection (then we use a <i>min heap</i>).
+            <br>
+            But every kind of data type can be used in a priority queue, as well as every criteria we have to. If its necessary, we can always define a custom comparator by ourselves and give it to the PQ.
+            <br><br>
+            The priority queue implementation in C++ is done with <span class="text-code">std::priority_queue</span> class. And, as a standard PQ, it supports the basic operations: insertio, deletion and peek top.
+            <br><br>
+            To use priority queue in C++ add the following import: <span class="text-code">#include &lt;queue&gt</span> or bits library, as can be seen in bellow image.
+        </p>
+            <img class="bound_image" src="../media/data_structures/priority-queue_use.png" alt="Usage of priority queue">
 
-        <p class="subtitle" id="sec_bst">Binary Search Tree</p>
+<!--        <p class="subtitle" id="sec_bst">Binary Search Tree (Set & Map)</p>
 
         <p class="text">
             Lorem ipsum dolor sit amet...
@@ -188,6 +280,8 @@
             You can access to its elements with <span class="text-code">p.first</span> and <span class="text-code">p.second</span> members.
             <br><br>
             And also you can use pairs inside of others data structures, such as vectors or maps. For example, a vector of pairs can be declared like: <span class="text-code">vector&lt;pair&lt;int, string&gt;&gt v;</span> and you can make pairs by putting both values you want to make a pair with inside a pair of keys, so you can work with it like: <span class="text-code">v.push_back({1,"one"});</span>.
+            <br><br>
+            To use pair in C++ add the following import: <span class="text-code">#include &lt;utility&gt</span> or bits library.
         </p>
 
         <p class="subtitle" id="sec_tuple">Tuple</p>
@@ -202,6 +296,8 @@
             As like pairs, you can use tuples inside of others data structures, such as vectors or maps. For example, a vector of tuples can be declared like: <span class="text-code">vector&lt;tuple&lt;int, string, double&gt;&gt v;</span> and you can make tuples by putting all the values you want to make a tuple with inside a pair of keys, so you can work with it like: <span class="text-code">v.push_back(make_tuple(1,"one",2.0));</span> or <span class="text-code">v.push_back({1,"one",2.0});</span>.
             <br><br>
             We have used tuples with only three values, but you can use as many values as you want, just by adding more types to the tuple declaration.
+            <br><br>
+            To use tuple in C++ add the following import: <span class="text-code">#include &lt;tuple&gt</span> or bits library.
         </p>
 
         <p class="subtitle" id="sec_array">Array</p>
@@ -216,6 +312,8 @@
             You can declare an array like: <span class="text-code">array&lt;int, 5&gt; a = {1,2,3,4,5};</span> or <span class="text-code">array&lt;int, 5&gt; a;</span> and then assign values to its elements like: <span class="text-code">a[0] = 1;</span>.
             <br><br>
             You can access to its elements with <span class="text-code">a[0]</span>, <span class="text-code">a[1]</span>, <span class="text-code">a[2]</span>, etc.
+            <br><br>
+            To use array in C++ add the following import: <span class="text-code">#include &lt;array&gt</span> or bits library.
         </p>
 
         <p class="subtitle" id="sec_practice">Problems to practice!</p>
@@ -226,6 +324,9 @@
                 <a href="https://leetcode.com/problems/valid-parentheses/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 20 - Valid Parentheses</p></li></a>
                 <a href="https://leetcode.com/problems/removing-stars-from-a-string/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 2390 - Removing Stars From a String</p></li></a>
                 <a href="https://leetcode.com/problems/daily-temperatures/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 738 - Daily Temperatures</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/1526/C2" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1526C - Potions (Hard Version)</p></li></a>
+                <a href="https://codeforces.com/problemset/problem/2037/D" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 2037D - Sharky Surfing</p></li></a>
+                <a href="https://atcoder.jp/contests/abc389/tasks/abc389_c" target="_blank"><li><img class="cf_icon" src="../media/atcoder-logo.png" alt="AtCoder icon"><p class="text">AtCoder ABC399 C - Snake Queue</p></li></a>
             </ol>
         <br>
     </section>
