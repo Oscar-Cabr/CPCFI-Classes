@@ -60,8 +60,8 @@
             <li><a href="#sec_queue" class="index">Queue</a></li>
             <li><a href="#sec_deque" class="index">Deque</a></li>
             <li><a href="#sec_heap" class="index">Heap (Priority Queue)</a></li>
-<!--            <li><a href="#sec_bst" class="index">Binary Search Tree (Set & Map)</a></li>
-            <li><a href="#sec_hashtable" class="index">Hashtable</a></li>
+            <li><a href="#sec_bst" class="index">Binary Search Tree (Map & Set)</a></li>
+<!--            <li><a href="#sec_hashtable" class="index">Hashtable (U-Map & U-Set)</a></li>
             <li><a href="#sec_bitset" class="index">Bitset</a></li>
             <li><a href="#sec_iterators" class="index">Iterators</a></li>-->
             <li><a href="#sec_pair" class="index">Pair</a></li>
@@ -94,7 +94,8 @@
             If the programmer wants to, he can practice importing every needed library individually. This could be a great idea when it's a beginner, so he can fully understand what's he doing and because of what.
             <br>
             However, for the persons who are used to the competitive environment, it could be more convenient to import the full STL with the non-standard import: <span class="text-code">#include &lt;bits/stdc++.h&gt</span>.
-
+            <br><br>
+            A good thing to have in mind while studying C++ is knowing where it documentation is, <a href="https://cplusplus.com" target="_blank"><b>cplusplus.com</b></a> is one site with very trustable information about the language and its structures. And it is an online compiler that also can be helpful in <a href="https://cpp.sh" target="_blank"><b>cpp.sh</b></a>.
         </p>
 
         <p class="subtitle" id="sec_vector">Vector</p>
@@ -246,6 +247,7 @@
                 <li>If you swap elements, repeat step No. 3 until you reach a leaf node.</li>
             </ol>
         </p>
+            <img class="bound_image" src="../media/data_structures/heap_tree.png" alt="Heap Tree">
         <br><hr>
         <p class="text">
             As it can be seen, operations in the heap have a complexity of \(O(log \; n)\).
@@ -266,13 +268,111 @@
         </p>
             <img class="bound_image" src="../media/data_structures/priority-queue_use.png" alt="Usage of priority queue">
 
-<!--        <p class="subtitle" id="sec_bst">Binary Search Tree (Set & Map)</p>
+        <p class="subtitle" id="sec_bst">Binary Search Tree (Map & Set)</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            We can serve ourselves with the same definition we used for explaining a heap for a binary tree.
+            <br>
+            A <b>binary search tree</b> (BST) is a particular case of a binary tree, which accomplishes the following:
+            <ol class="centered-list">
+                <li>It is a rooted tree. One vertex is chosen as the root, which give us a sense of direction and hierarchy. So we can have a sense of parent/children relationships.</li>
+                <li>For every node \(u\), all values in its left subtree are lower than \(u\)'s value, and all values in its right subtree are greater than \(u\)'s value.</li>
+            </ol>
         </p>
+        <p class="text">
+            This makes a very intuitive way to do operations over the tree.
+            <br>
+            When inserting elements, the process is the following and it start with the root:
+            <ol class="centered-list">
+                <li>Compare the new value to the actual node.</li>
+                <li>If the new value its lower than the actual one, apply first point with its left child.</li>
+                <li>If the new value its greater than the actual one, apply first point with its right child.</li>
+            </ol>
+        </p>
+        <p class="text">
+            Repeat it until you reach a leaf, so its child is empty, then place there the new value.
+        </p>
+        <p class="text">
+            To delete an element from the BST, the process is the following:
+            <ol class="centered-list">
+                <li>Find the node to be deleted.</li>
+                <li>If it has no children, just remove it.</li>
+                <li>If it has one child, replace it with its child.</li>
+                <li>If it has two children, find the minimum value in its right subtree (or maximum value in its left subtree), replace the node with that value and delete that minimum (or maximum) value from the tree.</li>
+            </ol>
+        </p>
+        <br><hr>
+        <p class="text">
+            As it can be seen, operations in the BST have a complexity of \(O(log \; n)\) in average case.
+            <br>
+            In the worst case, both insertion and deletion, have to travel all along tree height's, since our data is stored in a <b>binary</b> tree, the most steps can be done per operation are \(log_2(n)\) steps.
+            <br>
+            But if the tree is unbalanced, it can become a linked list, so the complexity can become linear \(O(n)\).
+            <br><br>
+            The way to solve that problem, is to use an self-balancing tree, it uses mechanisms to detect whenever the tree is degenerating and make rotations to balance it and compensate the trouble.
+            <br><br>
+            One kind of self-balancing tree are AVL Tree, where it uses the difference between the heights of the left and right subtrees for any node is at most one. Its named that way because of its inventors, Georgy Adelson-Velsky and Evgenii Landis.
+            <br><br>
+            But the C++ implementations is with Red-Black Trees, which are a type of self-balancing binary search tree. They ensure that the tree remains balanced by enforcing certain properties on the nodes, such as coloring them red or black and maintaining specific relationships between them.
+            <br>
+            In general, they follow the next rules:
+            <ul class="centered-list">
+                <li>Every node is either red or black.</li>
+                <li>The root node is always black.</li>
+                <li>All leaves (NIL nodes) are black.</li>
+                <li>If a red node has children, both of them must be black.</li>
+                <li>Every path from a node to its descendant leaves must have the same number of black nodes.</li>
+            </ul>
+        </p>
+        <p class="text">
+            These rules force the tree to stay <i>balanced enough</i> (not perfectly balanced, but guaranteed log height).
+            <br><br>
+            Here the operations works as follows, for insertion:
+            <ul class="centered-list">
+                <li>Insert the new node like in a normal BST.</li>
+                <li>Color it red initially.</li>
+                <li>If this breaks the rules (e.g. parent is also red), fix it using recoloring (flip red/black colors) or rotations (left of right to rebalance).</li>
+            </ul>
+        </p>
+        <p class="text">
+            Working with deletions:
+            <ul class="centered-list">
+                <li>Remove node like in a BST.</li>
+                <li>If this breaks rules (e.g. black-height inconsistency), fix it with recoloring + rotations.</li>
+            </ul>
+        </p>
+        <p class="text">
+            And finally, looking up on it works exactly like a normal BST (go left/right depending on value). Since the balancing only affects performance, not lookup logic.
+        </p>
+            <img class="bound_image" src="../media/data_structures/red-black_tree.png" alt="Red-Black Tree">
+        <hr><br>
+        <p class="text">
+            The first of the interfaces over Red-Black Tree is the <b>Set</b> DS, and these are the most important things to know about it is that it only contains unique elements, automatically sorted.
+            <br><br>
+            There also exists multiset structure, which is exactly the same as set, but it also admit duplicated elements.
+            <br><br>
+            To use set and multiset you only need the import <span class="text-code">#include &lt;set&gt</span>.
+        </p>
+        <hr><br>
+        <p class="text">
+            The second DS that uses Red-Black Tree implementation is <b>Map</b> DS.
+            <br>
+            Maps are associative containers that store elements formed by a combination of pairs <b>key value</b> and a <b>mapped value</b>, following a specific order.
+            <br>
+            Internally, the elements in a map are always sorted by its key, it works so well just as a set, since there can't be repeated keys, just by concept, you must be looking up for the same key-value pair.
+            <br><br>
+            The types of key and mapped value may differ, since they're grouped together by a usual <a href="#sec_pair"><b>pair</b></a>.
+            <br><br>
+            It is important to make the comparison with <a href="#sec_tuple"><b>hashtable</b></a> structure, since it is also an associative container. Map could be slower than Unordered Map, just by the nature of how are thay implemented. Also, Map allow us to make fixed-range look up, as could be <span class="text-code">upper_bound</span> or <span class="text-code">lower_bound</span>.
+            <br><br>
+            There also exists multimap structure, which is exactly the same as map, but it also admit duplicated keys. There can be multiple nodes with the same key each, but with different values. So you can do things like <span class="text-code">mm.insert({1,"one"}); mm.insert({1,"first"});</span>.
+            <br><br>
+            To use both map and multimap structures, the import <span class="text-code">#include &lt;map&gt</span> is needed.
+        </p>
+            <img class="bound_image" src="../media/data_structures/map_tree.png" alt="Map Tree">
 
-        <p class="subtitle" id="sec_hashtable">Hashtable</p>
+
+<!--        <p class="subtitle" id="sec_hashtable">Hashtable (U-Map & U-Set)</p>
 
         <p class="text">
             Lorem ipsum dolor sit amet...
@@ -348,6 +448,7 @@
                 <a href="https://codeforces.com/problemset/problem/1526/C2" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 1526C - Potions (Hard Version)</p></li></a>
                 <a href="https://codeforces.com/problemset/problem/2037/D" target="_blank"><li><img class="cf_icon" src="../media/cf-logo.webp" alt="Codeforces icon"><p class="text">Codeforces 2037D - Sharky Surfing</p></li></a>
                 <a href="https://atcoder.jp/contests/abc389/tasks/abc389_c" target="_blank"><li><img class="cf_icon" src="../media/atcoder-logo.png" alt="AtCoder icon"><p class="text">AtCoder ABC399 C - Snake Queue</p></li></a>
+                <a href="https://cses.fi/problemset/task/1621" target="_blank"><li><img class="CSES_icon" src="../media/CSES-logo.jpg" alt="CSES"><p class="text">CSES 1621 - Distinct Numbers</p></li></a>
             </ol>
         <br>
     </section>
