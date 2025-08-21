@@ -55,6 +55,7 @@
 
         <ol class="index-list">
             <li><a href="#sec_usage-of-ds" class="index">The usage of DS in contests</a></li>
+            <li><a href="#sec_general-cpp" class="index">General C++ things</a></li>
             <li><a href="#sec_vector" class="index">Vector</a></li>
             <li><a href="#sec_stack" class="index">Stack</a></li>
             <li><a href="#sec_queue" class="index">Queue</a></li>
@@ -62,8 +63,8 @@
             <li><a href="#sec_heap" class="index">Heap (Priority Queue)</a></li>
             <li><a href="#sec_bst" class="index">Binary Search Tree (Map & Set)</a></li>
 <!--            <li><a href="#sec_hashtable" class="index">Hashtable (U-Map & U-Set)</a></li>
-            <li><a href="#sec_bitset" class="index">Bitset</a></li>
-            <li><a href="#sec_iterators" class="index">Iterators</a></li>-->
+            <li><a href="#sec_bitset" class="index">Bitset</a></li>-->
+            <li><a href="#sec_iterators" class="index">Iterators</a></li>
             <li><a href="#sec_pair" class="index">Pair</a></li>
             <li><a href="#sec_tuple" class="index">Tuple</a></li>
             <li><a href="#sec_array" class="index">Array</a></li>
@@ -87,15 +88,50 @@
             <br><br>
             Antoher reason to learn data structures (DS until now) is for opening the door to study more complicated and abstract data structures that there aren't implemented on STL.
         </p>
-        <hr>
+
+        <p class="subtitle" id="sec_general-cpp">General C++ things</p>
+
         <p class="text">
-            All DS showed here are well-implemented in a high-level interface through C++ Standard Template Library (STL).
+            <b>All</b> DS showed here are well-implemented in a high-level interface through C++ Standard Template Library (STL).
             <br><br>
             If the programmer wants to, he can practice importing every needed library individually. This could be a great idea when it's a beginner, so he can fully understand what's he doing and because of what.
             <br>
             However, for the persons who are used to the competitive environment, it could be more convenient to import the full STL with the non-standard import: <span class="text-code">#include &lt;bits/stdc++.h&gt</span>.
             <br><br>
             A good thing to have in mind while studying C++ is knowing where it documentation is, <a href="https://cplusplus.com" target="_blank"><b>cplusplus.com</b></a> is one site with very trustable information about the language and its structures. And it is an online compiler that also can be helpful in <a href="https://cpp.sh" target="_blank"><b>cpp.sh</b></a>.
+        </p>
+        <br><hr>
+        <p class="text">
+            A sentence that almost always follows our imports is <span class="text-code">using namespace std;</span> sentence.
+            <br><br>
+            As it is known, using this sentence allow us to avoid writing <span class="text-code">std::</span> before every standard library object or function we want to use. So instead of writing things like <span class="text-code">std::cin</span>, <span class="text-code">std::cout</span>, <span class="text-code">std::endl</span>, or <span class="text-code">std::vector&lt;T&gt</span>.
+            <br>
+            We can just use <span class="text-code">cin</span>, <span class="text-code">cout</span>, <span class="text-code">endl</span>, or <span class="text-code">vector&lt;T&gt</span>. Very comfortable.
+            <br><br>
+            But why does this happen?
+            <br>
+            As we know, C++ is a multi-paradigm programming language, and one of its paradigms is Object-Oriented Programming (OOP). This means that everything in C++ is an object, and every object belongs to a class. And every class belongs to a namespace.
+            <br><br>
+            A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries.
+            <br>
+            This way we can have two functions with the same name in different namespaces, and the compiler will know which one we are referring to. We can define our own <span class="text-code">vector</span> structure or our own <span class="text-code">cin</span> function, and the compiler will know which one we are referring to thanks to the namespace.
+            <br><br>
+            To do this, we can call <span class="text-code">::</span> as the <b>scope resolution operator</b>.
+        </p>
+        <br><hr>
+        <p class="text">
+            Without noting DS libraries, a few headers used very often are <span class="text-code">#include &lt;algorithm&gt</span>, and <span class="text-code">#include &lt;cmath&gt</span>.
+            <br><br>
+            The first one defines a collection of functions especially designed to be used on ranges of elements. Know <i>range</i> as any sequence of objects that can be accessed through <a href="#sec_iterators" target="_blank"><b>iterators</b></a> or pointers, such as an <a href="#sec_array" target="_blank"><b>array</b></a> or an instance of some of the STL containers.
+            <br><br>
+            These algorithms operate through <a href="#sec_iterators" target="_blank"><b>iterators</b></a> directly on the values, not affecting in any way the structure of any possible container. It never affects the size or storage allocation of the container.
+            <br><br>
+            Some of the most used algorithms in contest that <span class="text-code">#include &lt;algorithm&gt</span> contains are:
+            <br>
+            <span class="text-code">find()</span>, <span class="text-code">count()</span>, <span class="text-code">find()</span>, <span class="text-code">search()</span>, <span class="text-code">swap()</span>, <span class="text-code">copy()</span>, <span class="text-code">fill()</span>, <span class="text-code">reverse()</span>, <span class="text-code">sort()</span>, <span class="text-code">binary_search()</span>, <span class="text-code">lower_bound()</span>, <span class="text-code">upper_bound()</span>, <span class="text-code">min()</span>, <span class="text-code">max()</span>, <span class="text-code">min_element()</span>, <span class="text-code">max_element()</span>, <span class="text-code">minmax()</span>, <span class="text-code">minmax_element()</span>, <span class="text-code">lexicographical_compare()</span>, and many others.
+            <br><br>
+            On the other hand, the header <span class="text-code">#include &lt;cmath&gt</span> contains a set of functions to compute common mathematical operations and transformations, it is the same as <span class="text-code">math.h</span> C numerics library.
+
         </p>
 
         <p class="subtitle" id="sec_vector">Vector</p>
@@ -382,13 +418,49 @@
 
         <p class="text">
             Lorem ipsum dolor sit amet...
-        </p>
+        </p>-->
 
         <p class="subtitle" id="sec_iterators">Iterators</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
-        </p>-->
+            A good way to understand iteratos it to think on them as pointer wrappers.
+            <br>
+            An iterator is an object that behaves like a pointer, used mostly to travel containers in C++. Instead of exposing raw memory, it provides a uniform interface to access elements inside any container.
+            <br><br>
+            A little about the magic of iterators is that they work inside any container, otherwise you should work with different code for each container type. More specifically, each data container have its own iterator.
+            <br>
+            For example, to declare an iterator we use the following sintaxis: <span class="text-code">vector&lt;int&gt::iterator</span> so you have an iterator useful for vector. As you have read in <a href="#sec_general-cpp" target="_blank"><b>General C++ things</b></a> section, that means you control which iterator you want to use by calling its <b>namespace</b>.
+            <br><hr>
+        </p>
+        <p class="text">
+            There are many types of iterators, even tho we only need to use <span class="text-code">iterator</span>, the rest of them are low-level cpp implementations that we don't need to know.
+            <br>
+            What is relevant for us is to knwo the two most important iterators: <span class="text-code">begin()</span> and <span class="text-code">end()</span>. The easiest way to understand them is with a vector container, where indexes are well defined.
+            <br>
+            <span class="text-code">begin()</span> always points to the <b>first element</b> (or index) in the collection. While <span class="text-code">end()</span> to one position after the last element in the collections. It can be obtained by doing <span class="text-code">v.begin() + v.size()</span>, so it isn't a valid position for an element to exist.
+            <br>
+            <span class="text-code">end()</span> acts a lot like sentinel, in non-linear containers this definitions loses precision, but it accomplishes the same idea. In trees, it is <span class="text-code">NIL</span> nodes (childrens of leafes), for example.
+            <br><br>
+            The partners of both <span class="text-code">begin()</span> and <span class="text-code">end()</span> are <span class="text-code">rbegin()</span> and <span class="text-code">rend()</span> iteratos, which preffixed <i>r</i> letter stands for reverse. This means, that <span class="text-code">rbegin()</span> points to the last element in the collection, and <span class="text-code">rbegin()</span> points to one position before the first element in the collection.
+            <br>
+            A consecuence of this is that you can access to the last element in a collection by checking <span class="text-code">*s.rbegin()</span>, <span class="text-code">*prev(s.end())</span> or <span class="text-code">*(s.end() - 1)</span>.
+            <br><br>
+            A lot of methods in <span class="text-code">algorithm</span> header use iterators, since they're a lot about range operations.
+        </p>
+        <hr><br>
+        <p class="text">
+            Iterators are important because of it common use in functions, but also to travel <span class="text-code">map</span> and <span class="text-code">set</span> container, as well as <span class="text-code">unordered_map</span> and <span class="text-code">unordered_set</span>.
+            <br>
+            Since they're containers are not trivial, in BST iterators need to implement a next-node searching algorithm, and they need a reference about where's the next bucket in HT DS.
+            <br><br>
+            So, in general, when you have to traverse a <span class="text-code">map</span>, you have to do it with iterators, or with for-each sentence.
+        </p>
+        <hr><br>
+        <p class="text">
+            Since they're, essentially, pointers, pointer arithmetic also works with them. This idea only remains to array-based containers, such as vector or deque, since thay have random access to its elements. For example, to access to the ith element of the collections, you can access by <span class="text-code">*(v.begin() + k)</span>.
+            <br><br>
+            You can know how many elements are in the collection by <span class="text-code">v.end() - v.begin()</span> which is the same as consulting <span class="text-code">size()</span>, and you can know the position of a iterator-known object by doing <span class="text-code">v.begin() - it</span>.
+        </p>
 
         <p class="subtitle" id="sec_pair">Pair</p>
 
