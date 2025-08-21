@@ -55,8 +55,8 @@
 
         <ol class="index-list">
             <li><a href="#sec_the-sorting-problem" class="index">The sorting problem</a></li>
-<!--            <li><a href="#sec_std-sort" class="index">std::sort and iterators</a></li>
-            <li><a href="#sec_custom-comparators" class="index">Custom sorting</a></li>-->
+            <li><a href="#sec_std-sort" class="index">Built-in sort C++ function</a></li>
+            <li><a href="#sec_custom-comparators" class="index">Custom sorting</a></li>
             <li><a href="#sec_counting-sort" class="index">Counting Sort</a></li>
             <li><a href="#sec_radix-sort" class="index">Radix Sort</a></li>
             <li><a href="#sec_practice" class="index">Problems to practice</a></li>
@@ -114,9 +114,20 @@
             that requires <b>sorting</b> after every single operation, maybe you need to accomplish the solution with a data structure, such as a
             priority queue or a multiset.
         </p>
-<!--
-        <p class="subtitle" id="sec_std-sort">Built-in <i>sort</i> C++ function</p>
 
+        <p class="subtitle" id="sec_counting-sort">Built-in sort C++ function</p>
+
+        <p class="text">
+            As almost everything, it already exists a tested and functional function in a language library to do most of the things we want to, and sorting its not the exception.
+            <br><br>
+            C++ sort implementation is made on <span class="text-code">std::sort</span> functions, that is included in <span class="text-code">algorithm</span> header.
+            <br>
+            The sintaxis is pretty simple, all you have to do is call the function, and pass it through argument two iterators: the first one should point to the first element who wants to be sorted. The second one must be one position after the last element who wants to be sorted.
+            <br>
+            If you think about it, you can sort all the collection with its <span class="text-code">begin()</span> and <span class="text-code">end()</span> iterator.
+            <br><br>
+            If you want to sort an integer vector you can use the following sintaxis:
+            <span class="text-code">vector&lt;int&gt v; sort( v.begin(), v.end() );</span>
         <p class="text">
 
         </p>
@@ -126,7 +137,9 @@
         <p class="text">
 
         </p>
--->
+        <img class="bound_image" src="../media/sorting/custom-sorting.png" alt="Ways to custom sort">
+
+
         <p class="subtitle" id="sec_counting-sort">Counting Sort</p>
 
         <p class="text">
