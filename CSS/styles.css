@@ -259,6 +259,79 @@ a:hover{
     height: 30px;
     width: auto;
 }
+/* Centrado de tabla */
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+/* Estilos de tabla */
+.truth-table {
+    border-collapse: collapse;
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+    font-family: sans-serif;
+    font-size: 25px;
+    text-align: center;
+    min-width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* Encabezados */
+.truth-table thead th {
+    background-color: #3d3d3d;
+    padding: 12px 20px;
+    border: 2px solid #3d3d3d;
+    font-weight: bold;
+    color: #80BCBD;
+}
+
+/* Celdas */
+.truth-table td {
+    padding: 12px 20px;
+    border: 1px solid #3d3d3d;
+}
+
+/* Filas alternadas para contraste */
+.truth-table tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+.operation-container {
+    display: flex;
+    justify-content: center;  /* centra ambas columnas */
+    gap: 50px;                /* espacio entre operaciones */
+    margin: 20px 0;
+}
+
+.operation {
+    display: inline-block;
+    font-family: "Sometype Mono", monospace;
+    font-size: 30px;
+    color: #f5f5f5;
+    margin: 20px;
+}
+
+.operation .operand,
+.operation .result {
+    display: flex;
+    justify-content: flex-end; /* Alinea de derecha a izquierda */
+    padding: 2px 0;
+}
+
+.operation .operator {
+    margin-right: 8px; /* Espacio entre el operador y el número */
+}
+
+.operation .line {
+    border-top: 2px solid #f5f5f5;
+    margin: 5px 0;
+}
+
+
 @media screen and (max-width: 767px){
     nav{
         padding: 0px;

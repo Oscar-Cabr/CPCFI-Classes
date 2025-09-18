@@ -51,21 +51,644 @@
         <p class="subtitle">Contents</p>
 
         <ol class="index-list">
-            <li><a href="#sec_searching" class="index">Lorem ipsum...</a></li>
+            <li><a href="#sec_biteate" class="index">Why to bit?</a></li>
+            <li><a href="#sec_bit_definitions" class="index">Some definitions</a></li>            
+            <li><a href="#sec_numbers_representation" class="index">Bit number representation</a></li>
+            <li><a href="#sec_bitwise" class="index">Bitwise operations</a></li>
+            <li><a href="#sec_set_operations" class="index">Bitset operations</a></li>
+            <li><a href="#sec_equations" class="index">Equations!</a></li>
+            <li><a href="#sec_cpp_bits" class="index">Bits AND C++</a></li>
             <li><a href="#sec_practice" class="index">Problems to practice</a></li>
         </ol>
 
-        <p class="subtitle" id="sec_searching">The searching problem</p>
+        <p class="subtitle" id="sec_biteate">Why to bit?</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
+            Bit manipulation is a very common topic to know about, not only because sometimes there appears some bit manipulation problems in contest, but it is involved in advanced topics such as Bitmask DP, BIT, Trie...
+            <br><br>
+            But in general, knowing how to bit helps to unlock ideas related to logarithmic complexities. The proper idea of being able to reach \(10^9\) things in \(log_2(10^9) \approx 30\) things is, itself, a powerful idea; and can be applied in other algorithms such as <a href='binary_search.html'>binary search</a>, binary lifting in LCA and some other binary stuff...
+            <br><br>
+            Learning how does bits works will upgrade your mind.
+        </p>
+
+        <p class="subtitle" id="sec_bit_definitions">Some definitions</p>
+
+        <p class="text">
+            While working with bits there appear some common words that might be confusing if are heard by the first time, so better know them from beforehand.
+            <ul class="list">
+                <li><b>Bit manipulation:</b> The act of algorithmically manipulating bits or binary digits, general work and usage that involves all kinda level-bit things: counting bits turned on, setting bits, clearing bits, toggling bits, checking parity, checking if a number is a power of two...</li>
+                <li><b>Bitmask:</b> A number that is used to represent a set of bits, where each bit corresponds to a specific element in the set. This mask made out of bits is a binary pattern used to manipulate or retrieve information about a certain data.</li>
+                <li><b>Bitwise operations:</b> Operations that directly manipulate bits, such as AND, OR, XOR, NOT, and bit shifts.</li>
+            </ul>
+            <br>
+        </p>
+        <p class="text">
+            Now let's put some definitions over the table. A bit is the minimal unit of information. We're talking about a <b>binary digit</b> because it can only take two values: 0 or 1. A bit is the representation of a state, either on or off, true or false, yes or no.
+            <br><br>
+            With one bit we can do just less than nothing, but if we put some bunch of them together, we can do a lot of funny things, and we can represent a lot of information if we know how to use them the right way. 
+        </p>
+
+        <p class="subtitle" id="sec_numbers_representation">Bit number representation</p>
+
+        <p class="text">
+            How does our computer stores numbers?
+            <br>
+            How can possibly the number 9223372036854775807 fit in a 64 integer representation? How can fit that number into 64 positions?
+            <br>
+            The answer is that our computer doesn't store numbers in decimal representation, but in binary representation. In binary representation, each digit can only be a 0 or a 1, and <b>each position represents a power of 2</b>.
+            <br><br>
+            So, we can express any number as a sum of powers of 2.
+            <br><br>
+            Let's try to count the most numbers we can with our hands.
+            <br>
+            What we usually would do is to araise one finger if we want to count to one more quantity. For the 1, I araise 1 finger. For the 2, I araise 2 fingers, and so on.
+            \[ (fingers) = 00001 = 1 \]
+            \[ 00011 = 2 \]
+            \[ 00111 = 3 \]
+            <br>
+            But what if we start counting from the nothing. Zero fingers araised, zero quantity.
+            \[00000 = 0\]
+            If I arise one finger, I have the number one.
+            \[ 00001 = 1 \]
+            Seems the same, but when I araise the sencond finger, what if I araise it, and then put down the first one and I called it number two?
+            \[ 00010 = 2 \]
+            Now I can araise again the first finger, and call it number three. We take one more number with two fingers out of nothing!
+            \[ 00011 = 3 \]
+            If I keep going the same way, now I can araise the next finger, and pull the others and call that a new number.
+            \[ 00100 = 4 \]
+            And we can keep going all the way with the rest of our fingers:
+            \[ 00101 = 5 \]
+            \[ 00110 = 6 \]
+            \[ 00111 = 7 \]
+            \[ 01000 = 8 \]
+            \[ 01001 = 9 \]
+            \[ 01010 = 10 \]
+            \[ \cdots \]
+            If you think about it, our fingers also can be in two states, either araised, or pulled. Two states, just as a bit. In definition, we could call our hand a set of bits, a set of five bits.
+        </p>
+        <hr>
+        <p class="text">
+            We found a better method for counting. If you think about it, every time we arise a new finger, we duplicate the number we're able to count to, because we can do all the combinations done before, but counting one more finger.
+            <br>
+            If you think about it, we counted with the two first fingers until number 3, but all the other fingers were pulled. If we araise one more finger, we still can do every combination, but now counting the new finger.
+            <br><br>
+            Basically, that's how counting numbers with bits works. You can add more fingers to count to greater numbers, and that's exactly how our computer works.
+            <br><br>
+            If you noticed, every time we araise a new finger we had a very singular numbers: 1, 2, 4, 8... (check the representation of those numbers above)
+            <br><br>
+            Counting this way leads us to assign a certain weight to evey finger (since we can see its individual value, the number we create when only a certain finger is araised, what we've done above).
+            <br>
+            If we rewrite it in a fancier way we have:
+            \[  2^4 = 16, 2^3 = 8, 2^2 = 4, 2^1 = 2, 2^0 = 1 \]
+            Let's sum all those numbers and voilá! Now we know that with our five fingers, we can count up to 31.
+            <br><br>
+            But let's go farther, what if we have more than five fingers, what if we had \(i\) fingers? Well, we can easily notice that, the value of a number, is the sum of all the numbers at its left. With this, we can also notice that we can form every number from 0 to \(2^i\), but the \(2^i\) itself. For the way we were thinking, if we had all the fingers arised, and we pull them down and arise the next one, that'll be the inmediate next number.
+            <br><br>
+            Counting with bits is nothing, but doing the sum of powers of two.
+        </p>
+        <hr>
+        <p class="text">
+            If you think about it, we're counting on a binary system, a numerical system which base is 2, instead of 10 as we usually know.
+            <br><br>
+            This leads us to think about a value based on a position.
+            <br>
+            If we think about our decimal system, we have then symbols denoting numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+            <br>
+            But when we need to count to numbers greaters than 9, we use another position: 10.
+            <br>
+            The number 10 is not a symbol itself, it's better to say that it is a combination of the past symbols, placed in a specific way.
+            <br><br>
+            So, when we need to count up to the number of our base (number 10 in this case), we cannot represent it as a symbol itselft, we use another position, forming the number one-zero = 1 0.
+            <br>
+            This leads us to think about it as a sum of powers of ten. Its well known that 100 (one-zero-zero) is the same as saying \(10^2\), and 10 (one-zero) is the same as \(10^1\), and 0 (zero) is the same as \(10^0\).
+            <br><br>
+            If you think about it, we have invented nothing with our way to cleverly count with our fingers, the same properties from the sum of powers remains, with the difference that in base two, we only have two symbols, 0 and 1. But every time we need to count one more number, we add one position, just like when we're usually counting, on base 10.
+            <br><br>
+            But with our new definition of positional value we can develop some other concepts.
+            <br><br>
+            First, let's call our bunch of bits (initially, the fingers of our hand) as a binary string. This makes sense because its a string formed only by 0's and 1's (binary states, binary values). If you want to, this is a bunch of bits, a set of bits, we could also call it a bitset.
+            <br><br>
+            Now, if we have a position value, we also have a place with the least and with the greatest value. The right-most place is the least one, because it can takes the value of 1. And the left-most place is the most significant one, because it can takes tha value of \(2^n\).
+            <br>
+            But these places can be empty if our numbers does not have a 1 on them. We can have any combination of bits and every single one of it will be a different number, so let's call <b>least significant bit</b> or <b>LSB</b> to the turned one bit at the right-most place of our number; and <b>most significant bit</b> or <b>MSB</b> to the turned on bit at the left-most place.
+        </p>
+        <hr>
+        <p class="text">
+            Let's put all this things together in a formal way.
+            <br><br>
+            A binary string \(S\) of size \(n\), is a string where each character of it \(s_i \in \{0, 1\} \; \forall \; i \in [0, n-1]\). So the decimal value of every bit is denoted by \(  s_i \cdot 2^i \). The decimal value of its binary representation can be obtained as \(  \sum_{i=0}^{n-1} s_i \cdot 2^i \), from the LSB.
+        </p>
+
+        <p class="subtitle" id="sec_bitwise">Bitwise operations</p>
+
+        <p class="text">
+            So we have a brand new type of data, bits. And we can do a lot of things with them, let's start with the operations we can do with them, mainly there are six which are explained as follows, the symbol in front of the name of the operation corresponds to its C++ operator.
+            <ul class="list">
+                <li><b>AND (\(\&\))</b><br>
+                    Binary operator, receives two entries (\(A\),\(B\)) and calculates only one as exit.
+                    <br>
+                    Returns 1 if both \(A\) and \(B\) are 1, otherwise returns 0.
+                    <br>
+                    Other ways to represent AND bitwise operation in literature and references are: \( \cdot, \land, \&, \cap, \text{AND}, \text{conjunction} \).
+                    <div class="table-container">
+                    <table class="truth-table" role="table" aria-label="Truth table for AND">
+                        <thead>
+                            <tr>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>A & B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td class="red-text">0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>1</td>
+                                <td class="red-text">0</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>0</td>
+                                <td class="red-text">0</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td class="green-text">1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </li>
+                <li><b>OR ( \(|\) )</b><br>
+                    Binary operator, receives two entries (\(A\),\(B\)) and calculates only one as exit.
+                    <br>
+                    Returns 1 if either \(A\) or \(B\), or both are 1, otherwise returns 0.
+                    Other ways to represent OR bitwise operations in literature and references are: \( +, \lor, \cup, \text{OR}, \text{disjunction} \).
+                    <div class="table-container">
+                    <table class="truth-table" role="table" aria-label="Truth table for AND">
+                        <thead>
+                            <tr>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>A | B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td class="red-text">0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>1</td>
+                                <td class="green-text">1</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>0</td>
+                                <td class="green-text">1</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td class="green-text">1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </li>
+                <li><b>XOR (^)</b><br>
+                    <b>Exclusive</b> or.
+                    <br>
+                    Binary operator, receives two entries (\(A\),\(B\)) and calculates only one as exit.
+                    <br>
+                    Returns 1 if \(A\) and \(B\) are different, otherwise returns 0. <i>This one, or that one, but not both.</i>
+                    <br>
+                    Other ways to represent XOR bitwise operations in literature and references are: \( \oplus, \text{XOR}, \text{exclusive or} \).
+                    <div class="table-container">
+                    <table class="truth-table" role="table" aria-label="Truth table for AND">
+                        <thead>
+                            <tr>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>A ^ B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td class="red-text">0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>1</td>
+                                <td class="green-text">1</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>0</td>
+                                <td class="green-text">1</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td class="red-text">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </li>
+                <li><b>NOT (~)</b><br>
+                    Unary operator, receives one entry (\(A\)) and calculates only one as exit.
+                    <br>
+                    Returns 1 if \(A\) is 0, otherwise returns 0.
+                    <br>
+                    Returns the negation of \(A\).
+                    <br>
+                    Other ways to represent NOT bitwise operations in literature and references are: ~,\(\neg, \bar{A}, \text{NOT}, \text{complement} \).
+                    <div class="table-container">
+                    <table class="truth-table" role="table" aria-label="Truth table for NOT">
+                        <thead>
+                            <tr>
+                                <th>A</th>
+                                <th>~A</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td class="green-text">1</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td class="red-text">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </li>
+                <li><b>Left shift (&lt;&lt;)</b><br>
+                    Binary operator, receives two entries (\(A\), \(n\)) and calculates one as exit.
+                    <br>
+                    Shifts the bits of \(A\) to the left by \(n\) positions.
+                    <br>
+                    Fills the vacated bits on the right with 0.
+                    <br>
+                    Looking out on decimal value of the bitset, it multiplies \(A\) per two \(n\) times, this is, multiplies \(A \cdot 2^n\).
+                    <div class="table-container">
+                    <table class="truth-table" role="table" aria-label="Truth table for left shift">
+                        <thead>
+                            <tr>
+                                <th>\(A_2\)</th>
+                                <th>\(A_{10}\)</th>
+                                <th>n</th>
+                                <th>A &lt;&lt; n</th>
+                                <th>\(A_{10}\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>110</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>101</td>
+                                <td>5</td>
+                                <td>1</td>
+                                <td>1010</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>1000</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>1011101</td>
+                                <td>93</td>
+                                <td>2</td>
+                                <td>101110100</td>
+                                <td>372</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </li>
+                <li><b>Right shift (&gt;&gt;)</b><br>
+                    Binary operator, receives two entries (\(A\), \(n\)) and calculates one as exit.
+                    <br>
+                    Shifts the bits of \(A\) to the right by \(n\) positions.
+                    <br>
+                    Fills the vacated bits on the left with 0.
+                    <br>
+                    Looking out on decimal value of the bitset, it divides \(A\) over two \(n\) times, this is, divides \( \lfloor \frac{A}{2^n} \rfloor \).
+                    <div class="table-container">
+                    <table class="truth-table" role="table" aria-label="Truth table for left shift">
+                        <thead>
+                            <tr>
+                                <th>\(A_2\)</th>
+                                <th>\(A_{10}\)</th>
+                                <th>n</th>
+                                <th>A &gt;&gt; n</th>
+                                <th>\(A_{10}\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>101</td>
+                                <td>5</td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>1000</td>
+                                <td>8</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>1000001111</td>
+                                <td>527</td>
+                                <td>3</td>
+                                <td>1000001</td>
+                                <td>65</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </li>
+            </ul>
+        </p>
+        <p class="text">
+            These operations are called bitwise operations.
+        </p>
+        <hr>
+        <p class="text">
+            The last thing we need to know is that, as operators, these have an identity element, an element that, if you operate them with a number \(A\), the result is \(A\) itself.
+            <br>
+            The identity for the algebraic sum is the zero, because \(A + 0 = A\), the identity for algebraic multiplication is one, because \(A * 1 = A\).
+            <br><br>
+            Is ease to see then, that every single one of our bitwise has an identity, also, as we defined before, our element must be on the form \(I \in \mathbb{B}\). For this to be clear let's try this concept between bitsets, and not only bits.
+            <br><br>
+            If we had an arbitrary number \(A = 10100110011010\), what could be the element needed for it to be the same after AND operation?
+            <br>
+            In the first case, if we choose the zero, we would had:
+            <div class="operation">
+                <div class="operand">10100110011010</div>
+                <div class="operand"><span class="operator">&</span>00000000000000</div>
+                <div class="line"></div>
+                <div class="result">00000000000000</div>
+            </div>
+        </p>
+        <p class="text">
+            This is, operating bit per bit following the rules we've seen before, the AND of a number with a zero, will always be a zero no matter what.
+            <br><br>
+            On the other side:
+            <div class="operation">
+                <div class="operand">10100110011010</div>
+                <div class="operand"><span class="operator">&</span>11111111111111</div>
+                <div class="line"></div>
+                <div class="result">10100110011010</div>
+            </div>
+        </p>
+        <p class="text">
+            Because an AND will be 1, only when \(a_i\) is also 1, here's our identity for AND operation, the 1-filled bitset.
+        </p>
+        <hr>
+        <p class="text">
+            Now let's try it the same way for OR operation:
+            <div class="operations-container">
+                <div class="operation">
+                    <div class="operand">10100110011010</div>
+                    <div class="operand"><span class="operator">|</span>00000000000000</div>
+                    <div class="line"></div>
+                    <div class="result">10100110011010</div>
+                </div>
+                <div class="operation">
+                    <div class="operand">10100110011010</div>
+                    <div class="operand"><span class="operator">|</span>11111111111111</div>
+                    <div class="line"></div>
+                    <div class="result">11111111111111</div>
+                </div>
+            </div>
+        </p>
+        <p class="text">
+            This is, if we have at least one 1 between both operands, the result will be 1 too. This means that, if we OR any number with a 1-filled number, the result will be 1-filled number, no matter what.
+            <br><br>
+            But we also found our identity element, is easy to see that, for OR operation, our identity is 0.
+        </p>
+        <hr>
+        <p class="text">
+            Now let's try it the same way for XOR operation:
+            <div class="operations-container">
+                <div class="operation">
+                    <div class="operand">10100110011010</div>
+                    <div class="operand"><span class="operator">^</span>00000000000000</div>
+                    <div class="line"></div>
+                    <div class="result">10100110011010</div>
+                </div>
+                <div class="operation">
+                    <div class="operand">10100110011010</div>
+                    <div class="operand"><span class="operator">^</span>11111111111111</div>
+                    <div class="line"></div>
+                    <div class="result">01011001100101</div>
+                </div>
+            </div>
+        </p>
+        <p class="text">
+            XOR is interesting for its properties. We could see that, exactly the same as OR, operate \(A\) with 0 will result it the name \(A\) itself. But now we can see that, when we XOR with 1-filled number, the result is the flipping of the bits. Because, in addition to the above, if we have two 1's the result is zero.
+            <br><br>
+            In conclusion, \(A \oplus 0 = A\), our identity element then is 0. But also \(A \oplus \text{1-filled number} = \bar{A} \).
+        </p>
+        <hr>
+        <p class="text">
+            Since NOT is an unary operand, we cannot establish this same idea, but in regret, we can say that the negation of our negation results the original: \( \bar{\bar{A}} = A\), in other notation: \(\sim(\sim A) = A\). As can be seen following:
+            <div class="operations-container">
+                <div class="operation">
+                    <div class="operand"><span class="operator">\(\neg\)</span>10100110011010</div>
+                    <div class="line"></div>
+                    <div class="result">01011001100101</div>
+                </div>
+                <div class="operation">
+                    <div class="operand"><span class="operator">\(\neg\)</span>01011001100101</div>
+                    <div class="line"></div>
+                    <div class="result">10100110011010</div>
+                </div>
+            </div>
+        </p>
+        <p class="text">
+            Which as we can see, switches bits every time.
+        </p>
+        <hr>
+        <p class="text">
+            Finally, bit shifting on definition shifts the bits of \(A\) to the right/left by \(n\) positions. So, if you shift a \(A\) by 0 positions, you'll get the same and we could say that's it identity elemtn.
+        </p>
+        <hr>
+        <p class="text">
+            In conclusion:
+            <div class="table-container">
+            <table class="truth-table" role="table" aria-label="Truth table for left shift">
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Symbol</th>
+                        <th>Identity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AND</td>
+                        <td>&amp;</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>OR</td>
+                        <td>|</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>XOR</td>
+                        <td>^</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>NOT</td>
+                        <td>~</td>
+                        <td>\(\not\exists\)</td>
+                    </tr>
+                    <tr>
+                        <td>Left shift</td>
+                        <td>&lt;&lt;</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Right shift</td>
+                        <td>&gt;&gt;</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </p>
+        <p class="text">
+            Last thing that must be cleared is that we've been using the term 1-filled number to denote... a number filled with 1's, but how can we make it using number bit representations?
+            <br><br>
+            Let \(|A|\) be the size (number of characters) of \(A\), then we could make the 1-filled number for \(A\) as \(  (1 &lt;&lt; |A|) - 1 \).
+        </p>
+
+        <p class="subtitle" id="sec_set_operations">Bitset operations</p>
+        
+        <p class="text">
+            Following bitwise is funny and important, but only doing the things we know won't let us solve problems that involves bit manipulation. For doing that, there's a set of certain operations we're interested to work with.
+            <br>
+            Most of them involves both bitmask and bitwise. You can peek information from a number by proposing a certain bitmask and operating them both with bitwise.
+            <br>
+            The bitmask part is basically all we've been doing in <a href='#sec_bitwise'>Bitwise operations</a> section, combining that in a clever way let us do the following operations:
+            <ul class="list">
+                <li>Get bit: <span class="text-code">(n &amp; (1 &lt;&lt; i)) != 0</span></li>
+                <li>Set bit: <span class="text-code">n |= (1 &lt;&lt; i)</span></li>
+                <li>Clear bit: <span class="text-code">n &amp;= ~(1 &lt;&lt; i)</span></li>
+                <li>Toggle bit: <span class="text-code">n ^= (1 &lt;&lt; i)</span></li>
+                <li>Get LSB: <span class="text-code">n &amp; -n</span></li>
+                <li>Clear LSB: <span class="text-code">n &amp;= (n - 1)</span></li>
+            </ul>
+        </p>
+        <p class="text">
+            As we've seen, the number's bit representations allow us to check bitsets on its own. But there's a powerfull idea on this, we can see the bits on a number, literally, as elements on a Set.
+            <br>
+            Given this representation, bitwise turns into set operations.
+            <ul class="list">
+                <li>Subset check: <span class="text-code">(A &amp; B) == B</span></li>
+                <li>Set union: <span class="text-code">A | B</span></li>
+                <li>Set intersection: <span class="text-code">A &amp; B</span></li>
+                <li>Set difference: <span class="text-code">A &amp; ~B</span></li>
+                <li>Toggle subset: <span class="text-code">A ^ B</span></li>
+            </ul>
+        </p>
+        <br>
+
+        <p class="subtitle" id="sec_equations">Equations!</p>
+
+        <p class="text">
+            There are some interesting equations that involves bitwise operations, and that are very useful in competitive programming.
+            <br><br>
+            Some properties of bitwise operations:
+            <ul class="list">
+                <li>\( a \; | \; b = a \oplus b + a \; \& \; b \)</li>
+                <li>\( a \oplus (a \; \& \; b) = (a \; | \; b) \oplus b \)</li>
+                <li>\( b \oplus (a \; \& \; b) = (a \; | \; b) \oplus a \)</li>
+                <li>\( (a \; \& \; b) \oplus (a \; | \; b) = a \oplus b \)</li>
+            </ul>
+        </p>
+        <p class="text">
+            In addition and substraction:
+            <ul class="list">
+                <li>\( a + b = (a \; | \; b) + (a \; \& \; b) \)</li>
+                <li>\( a + b = a \oplus b + 2 (a \; \& \; b) \)</li>
+                <li>\( a - b = (a \oplus (a \; \& \; b)) - ((a \; | \; b) \oplus a) ) \)</li>
+                <li>\( a - b = ((a \; | \; b) \oplus b) ) - ( (a \; | \; b) \oplus a ) \)</li>
+                <li>\( a - b = (a \oplus (a \; \& \; b)) - (b \oplus (a \; \& \; b) ) \)</li>
+                <li>\( a - b = ((a \; | \; b) \oplus b) ) - (b \oplus (a \; \& \; b) ) \)</li>
+            </ul>
+        </p>
+
+        <p class="subtitle" id="sec_cpp_bits">Bits AND C++</p>
+
+        <p class="text">
+            C++ has a lot of support while working with bits, more than the bitwise operators, it has built-in functions and a library to work with bitsets.
+            <br><br>
+            The built-in functions are:
+            <ul class="list">
+                <li><span class="text-code">__builtin_popcount(x)</span> - Count the number of set bits in x</li>
+                <li><span class="text-code">__builtin_clz(x)</span> - Count the number of leading zeros in x</li>
+                <li><span class="text-code">__builtin_ctz(x)</span> - Count the number of trailing zeros in x</li>
+            </ul>
+        </p>
+        <p class="text">
+            Also it is important to know the usage of <a href=data_structures_and_cpp_stl.html#sec_bitset>Bitset</a> class.
         </p>
 
         <p class="subtitle" id="sec_practice">Problems to practice!</p>
         <br>
         <section class="cf_problem list">
             <ol>
-                <a href="https://leetcode.com/problems/query-kth-smallest-trimmed-number/description/" target="_blank"><li><img class="cf_icon" src="../media/leetcode-logo-blanco.png" alt="Leetcode icon"><p class="text">Leetcode 2343 - Query Kth Smallest Trimmed Number</p></li></a>
+                <a href="https://codeforces.com/gym/106073/problem/C" target="_blank"><li><img class="cf_icon" src="../media/icpc_logo.png" alt="ICPC icon"><p class="text">Codeforces 106073C - Collatz polynomial</p></li></a>
+                <a href="https://codeforces.com/gym/105230/problem/B" target="_blank"><li><img class="cf_icon" src="../media/icpc_logo.png" alt="ICPC icon"><p class="text">Codeforces 105230B - Card Game</p></li></a>
             </ol>
         <br>
     </section>

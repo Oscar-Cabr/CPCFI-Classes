@@ -62,8 +62,8 @@
             <li><a href="#sec_deque" class="index">Deque</a></li>
             <li><a href="#sec_heap" class="index">Heap (Priority Queue)</a></li>
             <li><a href="#sec_bst" class="index">Binary Search Tree (Map & Set)</a></li>
-<!--            <li><a href="#sec_hashtable" class="index">Hashtable (U-Map & U-Set)</a></li>
-            <li><a href="#sec_bitset" class="index">Bitset</a></li>-->
+<!--            <li><a href="#sec_hashtable" class="index">Hashtable (U-Map & U-Set)</a></li>-->
+            <li><a href="#sec_bitset" class="index">Bitset</a></li>
             <li><a href="#sec_iterators" class="index">Iterators</a></li>
             <li><a href="#sec_pair" class="index">Pair</a></li>
             <li><a href="#sec_tuple" class="index">Tuple</a></li>
@@ -412,13 +412,42 @@
 
         <p class="text">
             Lorem ipsum dolor sit amet...
-        </p>
+        </p>-->
 
         <p class="subtitle" id="sec_bitset">Bitset</p>
 
         <p class="text">
-            Lorem ipsum dolor sit amet...
-        </p>-->
+            A bitset stores bits.
+            <br><br>
+            Emulates an array of <span class="text-code">bool</span> elements, but optimized for space allocation: generally, each element occupies only one bit.
+            <br>
+            Each bit position can be accesed individually with the operator <span class="text-code">[]</span>, and just like a vector, 0-indexed.
+            <br><br>
+            Bitsets have the feature of being able to be constructed from and converted to both, integer values and binary strings. They can also be directly inserted and extracted from streams in binary format.
+            <br><br>
+            A bad thing about bitsets is that is needed to declare its size in compilation time and it is not mutable, let's say that we're declaring a bitset of size 16.
+            Bitset have three constructor method, if instanced as <span class="text-code">bitset<16> bs();</span> it is initialized on zeros. It can also be initialized from an integer value <span class="text-code">bitset<16> bs(42);</span>. And the third method is to do it over a binary string: <span class="text-code">bitset<16> bs("101010");</span>.
+            <br><br>
+            There also can be applied any bitwise operator over the bitset identifier.
+            <br><br>
+            The rest of the interested methods follows:
+            <ul class="list">
+                <li><span class="text-code">to_string()</span> - Returns a string representation of the bitset in binary format.</li>
+                <li><span class="text-code">to_ullong()</span> - Converts the bitset to an unsigned long long integer. If its used, do it carefully, becuase it will return the number to an unsigned, if you assign it to a signed, the number representation could not be as expected.</li>
+                <li><span class="text-code">size()</span> - Size declared initially for the bitset.</li>
+                <li><span class="text-code">count()</span> - Return the number of 1's in the bitset.</li>
+                <li><span class="text-code">test(size_t pos)</span> - Returns a boolean, depending on the bit at position <span class="text-code">pos</span>. (0 = false, 1 = true)</li>
+                <li><span class="text-code">any()</span> - Returns a boolean, true if there's at least one bit 1 on the bitset, false otherwise.</li>
+                <li><span class="text-code">none()</span> - Returns a boolean, true if there's no bit 1 on the bitset, false otherwise.</li>
+                <li><span class="text-code">all()</span> - Returns a boolean, true if all bits are 1 on the bitset, false otherwise.</li>
+                <li><span class="text-code">set()</span> - Sets to 1 all bits on bitset.</li>
+                <li><span class="text-code">set(size_t pos, bool val)</span> - Sets val as the value for the bit at position pos.</li>
+                <li><span class="text-code">reset()</span> - Resets to 0 all bits on bitset.</li>
+                <li><span class="text-code">reset(size_t pos)</span> - Reset to 0 bit at position pos.</li>
+                <li><span class="text-code">flip()</span> - Flips all bits on bitset.</li>
+                <li><span class="text-code">flip(size_t pos)</span> - Flips bit at position pos.</li>
+            </ul>
+        </p>
 
         <p class="subtitle" id="sec_iterators">Iterators</p>
 
