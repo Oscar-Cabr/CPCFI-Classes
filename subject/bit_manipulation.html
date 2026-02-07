@@ -48,6 +48,9 @@
 
         <p class="supertitle">Bit Manipulation</p><br><br>
 
+        <a href="sorting.html"><p class="previous-lesson">Previous lesson: Sorting</p></a>
+        <a href="binary_search.html"><p class="following-lesson">Following lesson: Binary Search</p></a>
+
         <p class="subtitle">Contents</p>
 
         <ol class="index-list">
@@ -672,10 +675,10 @@
         <p class="text">
             C++ has a lot of support while working with bits, more than the bitwise operators, it has built-in functions and a library to work with bitsets.
             <br><br>
-            The built-in functions are:
+            The built-in functions included in header <span class="text-code">bit</span> are implemented since C++20:
             <ul class="list">
-                <li><span class="text-code">__builtin_popcount(x)</span> - Count the number of set bits in x</li>
-                <li><span class="text-code">__builtin_clz(x)</span> - Count the number of leading zeros in x</li>
+                <li><span class="text-code">std::popcount(x)</span> - Returns the number of bits 1 in x.</li>
+                <li><span class="text-code">std::countl_zero(x)</span> - </li>
                 <li><span class="text-code">__builtin_ctz(x)</span> - Count the number of trailing zeros in x</li>
             </ul>
         </p>
