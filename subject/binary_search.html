@@ -59,7 +59,7 @@
             <li><a href="#sec_implementation" class="index">How to implement Binary Search</a></li>
             <li><a href="#sec_built-in-functions" class="index">Built-in C++ Binary Search functions</a></li>
 <!--            <li><a href="#sec_BS-is-the-ans" class="index">Binary Search is the answer</a></li>-->
-            <li><a href="#sec_practice" class="index">Problems to practice</a></li>
+            <li><a href="#sec_practice" class="index">Problems to practice!</a></li>
         </ol>
 
         <p class="subtitle" id="sec_searching">The searching problem</p>
@@ -96,7 +96,7 @@
         </p>
         <p class="text">
             We'll be focusing on <b>sequential searching</b>, (usually) when we want to search for an element on a linear collection
-            such as a linked list, or the pretty common <span class="text-code">std::vector</span> the first approach and general method to do so is to
+            such as a linked list, or the pretty common <span class="text-code">std::vector</span>. The first approach and general method to do so is to
             check every element from the first index, to the last one. Going through every element once, and evaluating whatever we're interested in.
             <br><br>
             This is called <i>linear search</i> (LS). LS is good in its purpose, but as its name shows, have a time complexity of \( O(n) \) being <i>n</i> the collection size,
@@ -226,7 +226,7 @@
             <br><br>
             In general, the search operation is often used more than once, even more in contests. Let's suppose you have an input of size \( n \leq 10^5 \),
             where you have to make \( q \leq 10^5 \) queries over \( n \). This means, in other words, that you have to do \( q \) operations over \( n \).
-            If the operation is LS, then you have to LS \( q \) times over \( q \), which can be translated as
+            If the operation is LS, then you have to LS \( q \) times over \( n \), which can be translated as
             \[ q \times O(n) = 10^5 \times 10^5 = 10^{10} > 10^8\]
             that won't pass on complexity because the solutions complexity is \( O(n^2) \).
             <br>
@@ -313,7 +313,7 @@
         <hr>
         <p class="text">
             Let's keep in mind that the returned elements of both <span class="text-code">lower_bound</span> and <span class="text-code">upper_bound</span>
-            are iterators. So, to work with both of them, you need to know how iterators work too. An iterator is like a <i>C pointer</i> in some way, let's keep that in mind.
+            are <a href="data_structures_and_cpp_stl.html#sec_iterators"><b>iterators</b></a>. So, to work with both of them, you need to know how iterators work too. An iterator is like a <i>C pointer</i> in some way, let's keep that in mind.
             <br><br>
             Here are some common uses for iterators:
             <ul class="list">

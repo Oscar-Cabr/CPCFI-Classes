@@ -62,7 +62,7 @@
             <li><a href="#sec_set_operations" class="index">Bitset operations</a></li>
             <li><a href="#sec_equations" class="index">Equations!</a></li>
             <li><a href="#sec_cpp_bits" class="index">Bits AND C++</a></li>
-            <li><a href="#sec_practice" class="index">Problems to practice</a></li>
+            <li><a href="#sec_practice" class="index">Problems to practice!</a></li>
         </ol>
 
         <p class="subtitle" id="sec_biteate">Why to bit?</p>
@@ -114,7 +114,7 @@
             \[00000 = 0\]
             If I arise one finger, I have the number one.
             \[ 00001 = 1 \]
-            Seems the same, but when I araise the sencond finger, what if I araise it, and then put down the first one and I called it number two?
+            Seems the same, but when I araise the second finger, what if I araise it, and then put down the first one and I called it number two?
             \[ 00010 = 2 \]
             Now I can araise again the first finger, and call it number three. We take one more number with two fingers out of nothing!
             \[ 00011 = 3 \]
@@ -144,7 +144,7 @@
             <br>
             If we rewrite it in a fancier way we have:
             \[  2^4 = 16, 2^3 = 8, 2^2 = 4, 2^1 = 2, 2^0 = 1 \]
-            Let's sum all those numbers and voilá! Now we know that with our five fingers, we can count up to 31.
+            Let's sum all those numbers and <i>voilá</i>! Now we know that with our five fingers, we can count up to 31.
             <br><br>
             But let's go farther, what if we have more than five fingers, what if we had \(i\) fingers? Well, we can easily notice that, the value of a number, is the sum of all the numbers at its left. With this, we can also notice that we can form every number from 0 to \(2^i\), but the \(2^i\) itself. For the way we were thinking, if we had all the fingers arised, and we pull them down and arise the next one, that'll be the inmediate next number.
             <br><br>
@@ -162,7 +162,7 @@
             <br>
             The number 10 is not a symbol itself, it's better to say that it is a combination of the past symbols, placed in a specific way.
             <br><br>
-            So, when we need to count up to the number of our base (number 10 in this case), we cannot represent it as a symbol itselft, we use another position, forming the number one-zero = 1 0.
+            So, when we need to count up to the number of our base (number 10 in this case), we cannot represent it as a symbol itself, we use another position, forming the number one-zero = 1 0.
             <br>
             This leads us to think about it as a sum of powers of ten. Its well known that 100 (one-zero-zero) is the same as saying \(10^2\), and 10 (one-zero) is the same as \(10^1\), and 0 (zero) is the same as \(10^0\).
             <br><br>
@@ -186,7 +186,7 @@
         <p class="subtitle" id="sec_bitwise">Bitwise operations</p>
 
         <p class="text">
-            So we have a brand new type of data, bits. And we can do a lot of things with them, let's start with the operations we can do with them, mainly there are six which are explained as follows, the symbol in front of the name of the operation corresponds to its C++ operator.
+            So we have a brand new type of data: bits. And we can do a lot of things with them, let's start with the operations we can do with them, mainly there are six which are explained as follows, the symbol in front of the name of the operation corresponds to its C++ operator.
             <ul class="list">
                 <li><b>AND (\(\&\))</b><br>
                     Binary operator, receives two entries (\(A\),\(B\)) and calculates only one as exit.
@@ -679,8 +679,16 @@
             The built-in functions included in header <span class="text-code">bit</span> are implemented since C++20:
             <ul class="list">
                 <li><span class="text-code">std::popcount(x)</span> - Returns the number of bits 1 in x.</li>
-                <li><span class="text-code">std::countl_zero(x)</span> - </li>
-                <li><span class="text-code">__builtin_ctz(x)</span> - Count the number of trailing zeros in x</li>
+                <li><span class="text-code">std::has_single_bit(x)</span> - Checks if a number is an integral power of two.</li>
+                <li><span class="text-code">std::bit_ceil(x)</span> - Finds the smallest integral power of two not less than the given value.</li>
+                <li><span class="text-code">std::bit_floor(x)</span> - Finds the largest integral power of two not greater than the given value.</li>
+                <li><span class="text-code">std::bit_width(x)</span> - Finds the smallest number of bits needed to represent the given value.</li>
+                <li><span class="text-code">std::countl_zero(x)</span> - Counts the number of consecutive 0 bits, starting from the MSB.</li>
+                <li><span class="text-code">std::countl_one(x)</span> - Counts the number of consecutive 1 bits, starting from the MSB.</li>
+                <li><span class="text-code">std::countr_zero(x)</span> - Counts the number of consecutive 0 bits, starting from the LSB.</li>
+                <li><span class="text-code">std::countr_one(x)</span> - Counts the number of consecutive 1 bits, starting from the LSB.</li>
+                <li><span class="text-code">__builtin_ctz(x)</span> - Count the number of trailing zeros in x.</li>
+                <li><span class="text-code">__builtin_clz(x)</span> - Count the number of leading zeros in x.</li>
             </ul>
         </p>
         <p class="text">

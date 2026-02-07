@@ -69,7 +69,7 @@
             <li><a href="#sec_pair" class="index">Pair</a></li>
             <li><a href="#sec_tuple" class="index">Tuple</a></li>
             <li><a href="#sec_array" class="index">Array</a></li>
-            <li><a href="#sec_practice" class="index">Problems to practice</a></li>
+            <li><a href="#sec_practice" class="index">Problems to practice!</a></li>
         </ol>
 
         <p class="subtitle" id="sec_usage-of-ds">The usage of DS in contests</p>
@@ -79,13 +79,13 @@
             <br>
             So when designing an algorithm it is important to pick one that allows for efficient insertions, searches/queries, deletions, and/or updates, depending on what your algorithm needs, because there can be many ways to organize the same data and sometimes one way is better than the other in some contexts. 
             <br><br>
-            Although a data structures does not in itself solve a (programming contest) problem (the algorithm operating in it does), using an appropriately efficient data structure for a problem may be the difference between passing or exceedint the problem's time limit.
+            Although a data structures does not in itself solve a (programming contest) problem (the algorithm operating in it does), using an appropriately efficient data structure for a problem may be the difference between passing or exceeding the problem's time limit.
             <br><br>
             This page introduces the most important and common data structures used during contest.
             <br>
             From its definition, so the student can fully understand what is he using and how it works, to its implementation in C++ STL (Standard Template Library). As well as some important tips on how to use them based on experience solving problems, and examples of how to write code with them.
             <br><br>
-            Later or sooner, the competitive programmer will have the need for undestanding and get used to use them with ease so will develop speed and comfortness while implementing solutions.
+            Later or sooner, the competitive programmer will have the need for understanding and get used to use them with ease so will develop speed and comfortness while implementing solutions.
             <br><br>
             Antoher reason to learn data structures (DS until now) is for opening the door to study more complicated and abstract data structures that there aren't implemented on STL.
         </p>
@@ -99,7 +99,7 @@
             <br>
             However, for the persons who are used to the competitive environment, it could be more convenient to import the full STL with the non-standard import: <span class="text-code">#include &lt;bits/stdc++.h&gt</span>.
             <br><br>
-            A good thing to have in mind while studying C++ is knowing where it documentation is, <a href="https://cplusplus.com" target="_blank"><b>cplusplus.com</b></a> is one site with very trustable information about the language and its structures. And it is an online compiler that also can be helpful in <a href="https://cpp.sh" target="_blank"><b>cpp.sh</b></a>.
+            A good thing to have in mind while studying C++ is knowing where its documentation is,<a href="https://en.cppreference.com/" target="_blank"><b>en.cppreference.com</b></a>, <a href="https://cplusplus.com" target="_blank"><b>cplusplus.com</b></a> are sites with very trustable information about the language and its structures. And it is an online compiler that also can be helpful in <a href="https://cpp.sh" target="_blank"><b>cpp.sh</b></a>.
         </p>
         <br><hr>
         <p class="text">
@@ -111,7 +111,7 @@
             <br><br>
             But why does this happen?
             <br>
-            As we know, C++ is a multi-paradigm programming language, and one of its paradigms is Object-Oriented Programming (OOP). This means that everything in C++ is an object, and every object belongs to a class. And every class belongs to a namespace.
+            As we know, C++ is a multi-paradigm programming language, and one of its supported paradigms is Object-Oriented Programming (OOP). This means that everything in C++ is an object, and every object belongs to a class. And every class belongs to a namespace.
             <br><br>
             A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries.
             <br>
@@ -244,7 +244,7 @@
             <br>
             Let's define a graph in its general form as a mathematical structure of nodes and edges.
             <br>
-            The, let's define a tree as a particular case of a graph, that accomplish the following characteristics:
+            Then, let's define a tree as a particular case of a graph, that accomplish the following characteristics:
             <ul class="centered-list">
                 <li>It is an undirected graph.</li>
                 <li>It is connected. (It always exist a path between every two vertices)</li>
@@ -297,9 +297,9 @@
             <br>
             A priority queue sort its content based on an specific criteria, this usually interest us to be highest element in the collection (we use a <i>max heap</i>), or lowest element in the collection (then we use a <i>min heap</i>).
             <br>
-            But every kind of data type can be used in a priority queue, as well as every criteria we have to. If its necessary, we can always define a custom comparator by ourselves and give it to the PQ.
+            But every kind of data type can be used in a priority queue, as well as every criteria we have to. If its necessary, we can always define a custom comparator (if you want to know how check <a href="sorting.html#sec_custom-comparators"><b>Custom Sorting</b></a> section) by ourselves and give it to the PQ.
             <br><br>
-            The priority queue implementation in C++ is done with <span class="text-code">std::priority_queue</span> class. And, as a standard PQ, it supports the basic operations: insertio, deletion and peek top.
+            The priority queue implementation in C++ is done with <span class="text-code">std::priority_queue</span> class. And, as a standard PQ, it supports the basic operations: insertion, deletion and peek top.
             <br><br>
             To use priority queue in C++ add the following import: <span class="text-code">#include &lt;queue&gt</span> or bits library, as can be seen in bellow image.
         </p>
@@ -388,7 +388,7 @@
             <br><br>
             There also exists multiset structure, which is exactly the same as set, but it also admit duplicated elements.
             <br><br>
-            To use set and multiset you only need the import <span class="text-code">#include &lt;set&gt</span>.
+            To use both set and multiset you only need the import <span class="text-code">#include &lt;set&gt</span>.
         </p>
         <hr><br>
         <p class="text">
@@ -434,7 +434,7 @@
             The rest of the interested methods follows:
             <ul class="list">
                 <li><span class="text-code">to_string()</span> - Returns a string representation of the bitset in binary format.</li>
-                <li><span class="text-code">to_ullong()</span> - Converts the bitset to an unsigned long long integer. If its used, do it carefully, becuase it will return the number to an unsigned, if you assign it to a signed, the number representation could not be as expected.</li>
+                <li><span class="text-code">to_ullong()</span> - Converts the bitset to an unsigned long long integer. If its used, do it carefully, because it will return the number to an unsigned, if you assign it to a signed, the number representation could not be as expected.</li>
                 <li><span class="text-code">size()</span> - Size declared initially for the bitset.</li>
                 <li><span class="text-code">count()</span> - Return the number of 1's in the bitset.</li>
                 <li><span class="text-code">test(size_t pos)</span> - Returns a boolean, depending on the bit at position <span class="text-code">pos</span>. (0 = false, 1 = true)</li>
@@ -453,7 +453,7 @@
         <p class="subtitle" id="sec_iterators">Iterators</p>
 
         <p class="text">
-            A good way to understand iteratos it to think on them as pointer wrappers.
+            A good way to understand iterators it to think on them as pointer wrappers.
             <br>
             An iterator is an object that behaves like a pointer, used mostly to travel containers in C++. Instead of exposing raw memory, it provides a uniform interface to access elements inside any container.
             <br><br>
@@ -465,13 +465,13 @@
         <p class="text">
             There are many types of iterators, even tho we only need to use <span class="text-code">iterator</span>, the rest of them are low-level cpp implementations that we don't need to know.
             <br>
-            What is relevant for us is to knwo the two most important iterators: <span class="text-code">begin()</span> and <span class="text-code">end()</span>. The easiest way to understand them is with a vector container, where indexes are well defined.
+            What is relevant for us is to know the two most important iterators: <span class="text-code">begin()</span> and <span class="text-code">end()</span>. The easiest way to understand them is with a vector container, where indexes are well defined.
             <br>
             <span class="text-code">begin()</span> always points to the <b>first element</b> (or index) in the collection. While <span class="text-code">end()</span> to one position after the last element in the collections. It can be obtained by doing <span class="text-code">v.begin() + v.size()</span>, so it isn't a valid position for an element to exist.
             <br>
             <span class="text-code">end()</span> acts a lot like sentinel, in non-linear containers this definitions loses precision, but it accomplishes the same idea. In trees, it is <span class="text-code">NIL</span> nodes (childrens of leafes), for example.
             <br><br>
-            The partners of both <span class="text-code">begin()</span> and <span class="text-code">end()</span> are <span class="text-code">rbegin()</span> and <span class="text-code">rend()</span> iteratos, which preffixed <i>r</i> letter stands for reverse. This means, that <span class="text-code">rbegin()</span> points to the last element in the collection, and <span class="text-code">rbegin()</span> points to one position before the first element in the collection.
+            The partners of both <span class="text-code">begin()</span> and <span class="text-code">end()</span> are <span class="text-code">rbegin()</span> and <span class="text-code">rend()</span> iterators, which prefixed <i>r</i> letter stands for reverse. This means, that <span class="text-code">rbegin()</span> points to the last element in the collection, and <span class="text-code">rbegin()</span> points to one position before the first element in the collection.
             <br>
             A consecuence of this is that you can access to the last element in a collection by checking <span class="text-code">*s.rbegin()</span>, <span class="text-code">*prev(s.end())</span> or <span class="text-code">*(s.end() - 1)</span>.
             <br><br>
@@ -487,7 +487,7 @@
         </p>
         <hr><br>
         <p class="text">
-            Since they're, essentially, pointers, pointer arithmetic also works with them. This idea only remains to array-based containers, such as vector or deque, since thay have random access to its elements. For example, to access to the ith element of the collections, you can access by <span class="text-code">*(v.begin() + k)</span>.
+            Since they're, essentially, pointers, pointer arithmetic also works with them. This idea only remains to array-based containers, such as vector or deque, since thay have random access to its elements. For example, to access to the i-th element of the collections, you can access by <span class="text-code">*(v.begin() + k)</span>.
             <br><br>
             You can know how many elements are in the collection by <span class="text-code">v.end() - v.begin()</span> which is the same as consulting <span class="text-code">size()</span>, and you can know the position of a iterator-known object by doing <span class="text-code">v.begin() - it</span>.
         </p>
@@ -528,7 +528,7 @@
         <p class="text">
             Arrays are fixed-size sequence containers: they hold a specific number of elements ordered in a strict linear sequence.
             <br><br>
-            Internally, an array does not keep any data other than the elements it contains. It is as efficient in terms of storage size as an ordinary array declared with the languague's bracket sintax (<span class="text-code">[]</span>).
+            Internally, an array does not keep any data other than the elements it contains. It is as efficient in terms of storage size as an ordinary array declared with the language's bracket sintax (<span class="text-code">[]</span>).
             <br><br>
             Essentially, an array is a wrapper around a C-style array, which allows the use of STL algorithms and iterators. If you need to use a structure with various members of the same type, an array is a good choice even over a tuple, since it is more efficient in terms of memory usage and it is simplier to access to its elements.
             <br><br>

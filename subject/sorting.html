@@ -60,7 +60,7 @@
             <li><a href="#sec_custom-comparators" class="index">Custom sorting</a></li>
             <li><a href="#sec_counting-sort" class="index">Counting Sort</a></li>
             <li><a href="#sec_radix-sort" class="index">Radix Sort</a></li>
-            <li><a href="#sec_practice" class="index">Problems to practice</a></li>
+            <li><a href="#sec_practice" class="index">Problems to practice!</a></li>
         </ol>
 
         <p class="subtitle" id="sec_the-sorting-problem">The sorting problem</p>
@@ -72,7 +72,7 @@
             <br><br>
             Knowing what to sort is easy, we can sort everything we want to, and essentially, we can sort anything,
             but most of the time (even more in competitive programming) we'll be dealing with numbers, lists of numbers. There are also
-            a lot of situations in which sorting a <b>string</b> is needed, in that cases we use lexicographic order to do so.
+            a lot of situations in which sorting a <b>string</b> is needed, in that cases we use lexicographic (a &lt; b &lt; c...) order to do so.
             <br><br>
             How to sort is the funniest part of all the subject, there are a lot of sorting algorithms born at different moments in history,
             following are some of them:
@@ -231,10 +231,10 @@
         </p>
         <hr>
         <p class="text">
-            The complexity of counting sort is \[ O(n \, + \, k) \], let \( k \) be the range of the numbers in the original list. This is because we iterate
+            The complexity of counting sort is \[ O(n \, + \, k) \] let \( k \) be the range of the numbers in the original list. This is because we iterate
             one time over the original array, and iterate another time (not looped) over the range array (count).
             <br>
-            The space complexity of counting sort is \[ O_S( k ) \], because you need an additional collection of the size <i>range</i>: count.
+            The space complexity of counting sort is \[ O_S( k ) \] because you need an additional collection of the size <i>range</i>: count.
         </p>
         <hr>
         <br>
@@ -264,7 +264,7 @@
             <br><br><br>
             <span class="big-number">1st Step</span>
             <br>
-            Go through all the elements on the list. Every time add to its correspondant queue the element.
+            Go through all the elements on the list and add every one to its correspondant queue.
             
             <br><br><br>
             <span class="big-number">2nd Step</span>
@@ -275,16 +275,16 @@
             <br><br><br>
             <span class="big-number">3rd Step</span>
             <br>
-            Repeat all over the same digits times.
+            Repeat all over the same, <i>digits</i> times.
         </p>
 
         <hr>
 
         <p class="text">
-            The complexity of radix sort is \[ O(nk) \], let \( k \) be the radix of the numbers in the original list. This is because we iterate
+            The complexity of radix sort is \[ O(nk) \] let \( k \) be the radix of the numbers in the original list. This is because we iterate
             <i>radix</i> times over the original array <i>digits</i> times (but <i>digits</i> are a constant), after that the algorithm is done.
             <br>
-            The space complexity of counting sort is \[ O_S( n ) \], because you need an additional collection of the same size as the original.
+            The space complexity of counting sort is \[ O_S( n ) \] because you need an additional collection of the same size as the original.
             It's using different queues instead of another array, but it's still a collection of the same as the original.
         </p>
 
