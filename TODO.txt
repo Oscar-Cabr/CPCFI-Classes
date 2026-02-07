@@ -4,6 +4,7 @@
 - Make "subject/math.html" and "subject/math/" (as dp) to profundize in math topics. (as binpow, prime decomposition...)
 - Make "subject/greedy.html".
     * Link line 86 of "subject/sorting.html" to "Greedy" page.
+- Enhance all problems section. (take out ICPC problems and complete it with n-gens suggested problems)
 CSS/styles.css
     - Clean "CSS/styles.css" from reutilization.
         * Keep only in-use styles.
@@ -35,9 +36,11 @@ subject/sorting.html
     - Pending: "std::sort and iterators" section.
     - Improve: "Radix Sort" section.
     - Add "References" section.
+    - Link line 105 to "subject/algorithmic_complexity#sec_greedy" section.
 subject/data_structures_and_cpp_stl.html
     - Pending.
         * Explain the problem with the call stack: Why do we preffer to use iterative algorithms over recursive ones.
+        * Add cmath library common funcations. (as well on math section?)
     - Link line 94 of "subject/sorting.html" to "Binary Search Tree" section.
     - Link line 116 of "subject/binary_search.html" to "Hash table" section.
 subject/dynamic_programming.html
@@ -46,23 +49,34 @@ subject/dynamic_programming.html
         * DP turn NP complexities into pseudo-P. That's why DP algorithms has exponential complexities.
         * Create original image of the decision tree while explaining Fibonacci problem (complexity 2^n).
         * Add "Common problems" section. (Solution and short talked solution) ¿Do another page for this?
+    - Add link to DFS section in line 139.
 subject/bit_manipulation.html
-    - Pending.
-        * Why to bit?
-        * Binary representation of numbers.
-        * Differences between bit manipulation, bitwise and bitmask.
-        * Bit shifting, and, or, xor.
-        * Built-in C++ bitwise functions.
-        * Some examples of bit operations.
-        * Bitset and numbers as natural bitsets.
-    - Link apropiate lines on "subject/binary_search.html" page.
+    - Wrap line 98 into a subtitle.
 subject/binary_search.html
     - Pending: "Binary Search is the answer" section.
+    - Link line 119 to "hash table" section.
 
 CURRENT LESSONS ORDER:
 1. Algorithmic complexity.
--. Data structures and C++ STL.
-2. Sorting.
--. Bit manipulation.
-3. Binary Search.
-4. Dynamic programming.
+2. Data structures and C++ STL.
+3. Sorting.
+-. Algorithmic Paradigms
+  - Complete Search.
+  - Divide and Conquer.
+  - Greedy.
+  - Backtracking.
+  - Two Pointers.
+4. Bit manipulation.
+5. Binary Search.
+-. Range Queries.
+-. Maths.
+  -.1 Number Theory.
+  -.2 Combinatorics.
+  -.3 Probability.
+  -.4 Computational Geometry.
+  -.5 Matrix Exponentiation.
+  -.6 Fast Fourier Transform.
+7. Dynamic programming.
+-. Strings.
+-. Graph Theory.
+-. Game Theory.
