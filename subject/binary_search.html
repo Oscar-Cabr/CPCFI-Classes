@@ -304,8 +304,7 @@
             Returns an iterator pointing to the first element in the range \( [first, last) \) which compares greater than <span class="text-code">val</span>.
             <br>
             If <span class="text-code">val</span> exists, <span class="text-code">upper_bound</span> points to the element following to the last equal to <span class="text-code">val</span>.
-            If <span class="text-code">val</span> doesn't exist, <span class="text-code">upper_bound</span> points to the first element greater than <span class="text-code">val</span>.
-            <br>
+            If <span class="text-code">val</span> doesn't exist, <span class="text-code">upper_bound</span> points to the first element greater than <span class="text-code">val</span>. <br>
             If such value doesn't exist (all the elements on the interval compare less or equal than <span class="text-code">val</span>), returns the <span class="text-code">end</span> iterator.
             <br><br>
             Example: <span class="text-code">vector&lt;int&gt;::iterator it = upper_bound(v.begin(),v.end(),5);</span>
