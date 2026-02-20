@@ -1,0 +1,30 @@
+.medium-number{
+    width: 150px;
+    height: 150px;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px var(--color-light-shadow);
+    margin-left: 30px;
+    margin-top: -50px;
+}
+.big-number{
+    width: 200px;
+    height: 200px;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px var(--color-light-shadow);
+    margin-left: 30px;
+    margin-top: -50px;
+}

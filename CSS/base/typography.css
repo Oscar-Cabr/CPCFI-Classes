@@ -1,0 +1,61 @@
+/* All text rules */
+.supertitle{
+    font-size: 100px;
+    margin-bottom: 20px;
+    font-family: "Sometype Mono", monospace;
+    color: var(--color-text-primary);
+}
+.supertitle_2{
+    font-size: 40px;
+    font-family: "Mooli", sans-serif;
+    margin: 0;
+    color: var(--color-text-primary);
+}
+.subtitle{
+    font-size: 40px;
+    font-family: "Mooli", sans-serif;
+    padding: 5px;
+    color: var(--color-text-primary);
+    background-color: var(--color-gb-subtle);
+}
+.text{
+    font-family:sans-serif;
+    margin: 50px;
+    font-size: 30px;
+    color: var(--color-text-primary);
+    text-align: justify;
+}
+.text ul{
+    font-family: "Sometype Mono", monospace;
+    margin-left: 500px;
+    font-size: 30px;
+    color: var(--color-text-primary);
+}
+.text ol{
+    font-family: "Sometype Mono", monospace;
+    font-size: 30px;
+    color: var(--color-text-primary);
+}
+.index{
+    font-family:sans-serif;
+    font-size: 40px;
+    color: var(--color-text-primary);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+}
+.green-text{
+    color: var(--color-text-success);
+}
+.red-text{
+    color: var(--color-text-danger);
+}
+.text-code{
+    background-color: var(--color-bg-elevated);
+    color: var(--color-text-code);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.95em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}

@@ -1,0 +1,14 @@
+/* Pure HTML elements (no classes) */
+.background{
+    background-color: var(--color-bg-base);
+    background-repeat: repeat;
+    background-size: 300px;
+}
+a{
+    text-decoration: none;
+    color: var(--color-link-default);
+}
+a:hover{
+    color:var(--color-link-hover);
+    text-decoration: underline;
+}

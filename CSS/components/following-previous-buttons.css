@@ -1,0 +1,41 @@
+/* Reusable visual components */
+.previous-lesson {
+    font-family: "Sometype Mono", monospace;
+    font-size: 35px;
+    color: var(--color-btn-previous);
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: var(--color-bg-surface);
+    border-radius: 10px;
+    display: inline-block;
+    width: auto;
+    box-shadow: 0 10px 8px 5px var(--color-dark-shadow);
+    transition: all 0.3s ease;
+}
+.previous-lesson:hover {
+    color: var(--color-btn-previous-hover);
+    background-color: var(--color-bg-subtle);
+    box-shadow: 0 20px 12px var(--color-dark-shadow);
+    transform: translateY(-2px);
+}
+.following-lesson {
+    font-family: "Sometype Mono", monospace;
+    font-size: 35px;
+    color: var(--color-btn-following);
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: var(--color-bg-surface);
+    border-radius: 10px;
+    display: inline-block;
+    width: auto;
+    box-shadow: 0 10px 8px 5px var(--color-dark-shadow,red);
+    transition: all 0.3s ease;
+}
+.following-lesson:hover {
+    color: var(--color-btn-following-hover);
+    background-color: var(--color-bg-subtle);
+    box-shadow: 0 20px 12px var(--color-dark-shadow);
+    transform: translateY(-2px);
+}

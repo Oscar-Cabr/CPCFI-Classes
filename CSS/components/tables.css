@@ -1,0 +1,46 @@
+/* Tables styles */
+.truth-table {
+    border-collapse: collapse;
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-family: sans-serif;
+    font-size: 25px;
+    text-align: center;
+    min-width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+.truth-table thead th {
+    background-color: var(--color-bg-subtle);
+    padding: 12px 20px;
+    border: 2px solid var(--color-bg-subtle);
+    font-weight: bold;
+    color: var(--color-link-default);
+}
+.truth-table td {
+    padding: 12px 20px;
+    border: 1px solid var(--color-bg-subtle);
+}
+.truth-table tbody tr:nth-child(even) {
+    background-color: var(--color-bg-elevated);
+}
+.operation {
+    display: inline-block;
+    font-family: "Sometype Mono", monospace;
+    font-size: 30px;
+    color: var(--color-text-primary);
+    margin: 20px;
+}
+.operation .operand,
+.operation .result {
+    display: flex;
+    justify-content: flex-end; /* Alinea de derecha a izquierda */
+    padding: 2px 0;
+}
+.operation .operator {
+    margin-right: 8px; /* Espacio entre el operador y el número */
+}
+.operation .line {
+    border-top: 2px solid var(--color-text-primary);
+    margin: 5px 0;
+}

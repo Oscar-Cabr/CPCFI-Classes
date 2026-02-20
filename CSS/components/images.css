@@ -1,0 +1,39 @@
+/* Images styles */
+.topic_image{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 10vw;
+    height: auto;
+    margin-right: 20px
+}
+.bound_image{
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 40vw;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.floating_image{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: auto;
+    z-index: 9999;
+}
+.cf_problem ol li p{
+    margin-left: 1%;
+    display: inline;
+}
+.cf_icon{
+    height: 40px;
+    width: auto;
+}
+.CSES_icon{
+    height: 30px;
+    width: auto;
+}

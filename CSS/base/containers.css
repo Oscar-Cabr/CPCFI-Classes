@@ -1,0 +1,35 @@
+/* Structural Containers */
+.floating_solid_band{
+    width: 90%;
+    height: auto;
+    border-radius: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+    background: var(--color-bg-surface);
+}
+.topic_container{
+    background-color: var(--color-bg-subtle);
+    position: relative;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+    padding: 2%;
+    text-align: left;
+    list-style: none;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+}
+.operation-container {
+    display: flex;
+    justify-content: center;  /* centra ambas columnas */
+    gap: 50px;                /* espacio entre operaciones */
+    margin: 20px 0;
+}
