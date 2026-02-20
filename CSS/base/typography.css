@@ -16,7 +16,7 @@
     font-family: "Mooli", sans-serif;
     padding: 5px;
     color: var(--color-text-primary);
-    background-color: var(--color-gb-subtle);
+    background-color: var(--color-bg-subtle);
 }
 .text{
     font-family:sans-serif;
