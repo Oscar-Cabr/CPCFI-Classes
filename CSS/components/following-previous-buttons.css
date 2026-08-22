@@ -39,3 +39,23 @@
     box-shadow: 0 20px 12px var(--color-dark-shadow);
     transform: translateY(-2px);
 }
+.toclass-lesson {
+    font-family: "Sometype Mono", monospace;
+    font-size: 35px;
+    color: var(--color-btn-toclass);
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: var(--color-bg-surface);
+    border-radius: 10px;
+    display: inline-block;
+    width: auto;
+    box-shadow: 0 10px 8px 5px var(--color-dark-shadow,red);
+    transition: all 0.3s ease;
+}
+.toclass-lesson:hover {
+    color: var(--color-btn-toclass-hover);
+    background-color: var(--color-bg-subtle);
+    box-shadow: 0 20px 12px var(--color-dark-shadow);
+    transform: translateY(-2px);
+}

@@ -52,12 +52,15 @@
   --danger-500: hsl(0,80%,55%);
   --danger-700: hsl(0,80%,40%);
   /* Brand accents */
-  --accent-previous-300: hsl(200,100%,82%);
-  --accent-previous-500: hsl(200,100%,72%);
-  --accent-previous-700: hsl(200,100%,62%); 
-  --accent-following-300: hsl(4,75%,70%);
-  --accent-following-500: hsl(4,75%,60%);
-  --accent-following-700: hsl(4,75%,50%);
+  --accent-blue-300: hsl(200,100%,82%);
+  --accent-blue-500: hsl(200,100%,72%);
+  --accent-blue-700: hsl(200,100%,62%); 
+  --accent-red-300: hsl(4,75%,70%);
+  --accent-red-500: hsl(4,75%,60%);
+  --accent-red-700: hsl(4,75%,50%);
+  --accent-purple-300: hsl(306,76%,46%);
+  --accent-purple-500: hsl(306,76%,36%);
+  --accent-purple-700: hsl(306,76%,26%);
 
   /* === Semantic layer === */
   --color-bg-base: var(--neutral-900);
@@ -78,8 +81,10 @@
   --color-light-shadow: var(--neutral-600);
   --color-dark-shadow: var(--neutral-900);
 
-  --color-btn-previous: var(--accent-previous-500);
-  --color-btn-previous-hover: var(--accent-previous-300);
-  --color-btn-following: var(--accent-following-500);
-  --color-btn-following-hover: var(--accent-following-300);
+  --color-btn-previous: var(--accent-blue-500);
+  --color-btn-previous-hover: var(--accent-blue-300);
+  --color-btn-following: var(--accent-red-500);
+  --color-btn-following-hover: var(--accent-red-300);
+  --color-btn-toclass: var(--accent-purple-500);
+  --color-btn-toclass-hover: var(--accent-purple-300);
 }
